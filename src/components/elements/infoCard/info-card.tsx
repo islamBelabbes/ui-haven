@@ -13,7 +13,7 @@ function InfoCard() {
     <div className="flex max-w-[18.125rem] flex-col gap-5 rounded bg-white p-4 transition">
       {/* top */}
       <div className="flex items-center justify-between">
-        <span className="text-sm font-semibold text-slate-500">
+        <span className="text-sm/[19px] font-semibold text-slate-500">
           Endanged Species
         </span>
         <button className="flex max-h-6 max-w-6 items-center justify-center rounded border border-[#E7EAEE] p-1">
@@ -32,21 +32,23 @@ function InfoCard() {
         </div>
 
         <div className="flex flex-col gap-1">
-          <h3 className="font-medium text-[#191D23]">Bengal tiger</h3>
+          <h3 className="font-medium leading-[22px] text-[#191D23]">
+            Bengal tiger
+          </h3>
           <span className="text-sm/[0.975rem] text-slate-500">
             Found in 53 countries
           </span>
-          <span className="text-sm text-emerald-700">Panthera</span>
+          <span className="text-sm/[19px] text-emerald-700">Panthera</span>
         </div>
       </div>
 
       {/* About */}
       <div className="font-semibold text-[#191D23]">
-        <h2 className="mb-1">About</h2>
+        <h2 className="mb-1 leading-[22px]">About</h2>
         <AnimateChangeInHeight>
           <div className="inline-block">
             <p
-              className="mb-1 line-clamp-3 font-normal transition"
+              className="mb-1 line-clamp-3 font-normal leading-[22px] transition"
               style={{
                 WebkitLineClamp: isExpanded ? "unset" : undefined,
               }}
@@ -58,7 +60,7 @@ function InfoCard() {
           </div>
         </AnimateChangeInHeight>
         <button
-          className="flex items-center gap-1 text-sm"
+          className="flex items-center gap-1 text-sm/[19px]"
           onClick={toggleExpanded}
         >
           <span>{isExpanded ? "Show Less" : "Show More"}</span>
