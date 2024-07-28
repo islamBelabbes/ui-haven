@@ -87,7 +87,7 @@ const AngularIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_6_13843)">
+      <g clipPath="url(#clip0_6_13843)">
         <path
           d="M0.00927734 4.35139L11.8038 0.0666504L23.9159 4.27521L21.9547 20.1859L11.8038 25.9179L1.81162 20.2621L0.00927734 4.35139Z"
           fill="#E23237"
@@ -136,18 +136,18 @@ const ClockIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_6_13857)">
+      <g clipPath="url(#clip0_6_13857)">
         <path
           d="M7.99992 14.6666C11.6818 14.6666 14.6666 11.6818 14.6666 7.99992C14.6666 4.31802 11.6818 1.33325 7.99992 1.33325C4.31802 1.33325 1.33325 4.31802 1.33325 7.99992C1.33325 11.6818 4.31802 14.6666 7.99992 14.6666Z"
           stroke="#64748B"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
         <path
           d="M10 10.6667L8.39067 9.05733C8.1406 8.80734 8.00008 8.46826 8 8.11467V4"
           stroke="#64748B"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </g>
       <defs>
