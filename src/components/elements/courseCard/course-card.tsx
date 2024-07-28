@@ -63,7 +63,7 @@ function CourseCard() {
         <p className="mt-4 text-base/[22px] text-[#191D23]">
           Cyber security is the practice of defending computers, servers, mobile
           devices, electronic systems, networks, and data from malicious
-          attacks. It's also known as information technology security or
+          attacks. It&lsquo;s also known as information technology security or
           electronic information security.
         </p>
 
@@ -163,7 +163,7 @@ const RobotIcon = ({
   fill = true,
   delay,
 }: {
-  fill?: Boolean;
+  fill?: boolean;
   delay?: number;
 }) => {
   return (
@@ -184,7 +184,7 @@ const RobotIcon = ({
           opacity: 1,
           transition: {
             ease: "easeInOut",
-            delay: delay || undefined,
+            delay: delay ?? undefined,
           },
         }}
       />

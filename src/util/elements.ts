@@ -10,9 +10,9 @@ export async function getElement(elementFolderName: string) {
     elementFolderName,
   );
 
-  const attributes = (await import(
+  const attributes = await import(
     `@/components/elements/${elementFolderName}/attributes.ts`
-  ).then((file) => file.default)) as TAttributes;
+  ).then((file: { default: TAttributes }) => file.default);
 
   const componentContents = fs
     .readdirSync(componentPath)
@@ -23,13 +23,13 @@ export async function getElement(elementFolderName: string) {
     .map((file) => ({
       name: file,
       code: fs.readFileSync(path.join(componentPath, file), "utf-8"),
-      language: file.split(".")[1] || null,
+      language: file.split(".")[1] ?? null,
     }))
-    .sort((a, b) => (a.name === attributes.slug ? -1 : 1));
+    .sort((a) => (a.name === attributes.slug ? -1 : 1));
 
-  const Component = (await import(
+  const Component = await import(
     `@/components/elements/${elementFolderName}/${attributes.slug}`
-  ).then((comp) => comp.default)) as React.FC;
+  ).then((comp: { default: React.FC }) => comp.default);
 
   return {
     files,

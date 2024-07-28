@@ -55,7 +55,8 @@ function InfoCard() {
             >
               The Bengal tiger is a population of the Panthera tigris tigris
               subspecies. It ranks among the biggest wild cats alive today. It
-              is considered to belong to the world's charismatic megafauna.
+              is considered to belong to the world&lsquo;s charismatic
+              megafauna.
             </p>
           </div>
         </AnimateChangeInHeight>

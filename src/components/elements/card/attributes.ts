@@ -1,4 +1,4 @@
-import { TAttributes } from "@/types";
+import { type TAttributes } from "@/types";
 
 const att: TAttributes = {
   name: "Card", // the Component Heading name
