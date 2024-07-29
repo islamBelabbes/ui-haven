@@ -38,7 +38,7 @@ const ComponentPreviewerContent = () => {
           child: "flex w-full items-center justify-center",
         }}
       >
-        <AnimatePresence mode="wait" initial={false} presenceAffectsLayout>
+        <AnimatePresence mode="wait" initial={false}>
           {mod === "preview" && <Previewer key={"preview"} />}
           {mod === "code" && <CodePreviewer key={"code"} />}
         </AnimatePresence>

@@ -41,20 +41,15 @@ export async function getElement(elementFolderName: string) {
     }),
   );
 
-  const Component = await import(
-    `@/elements/components/${elementFolderName}/${attributes.slug}`
-  ).then((comp: { default: React.FC }) => comp.default);
-
   return {
     files: formattedFiles,
     attributes,
-    Component,
   };
 }
 
 export async function getAllElements() {
   const root = path.resolve("src", "elements", "components");
-  const paths = fs.readdirSync(root);
+  const paths = fs.readdirSync(root).filter((path) => path !== "index.ts");
 
   return await Promise.all(
     paths.map(async (path) => {
