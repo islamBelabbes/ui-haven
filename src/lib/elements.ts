@@ -5,8 +5,8 @@ import path from "path";
 export async function getElement(elementFolderName: string) {
   const componentPath = path.resolve(
     "src",
-    "components",
     "elements",
+    "components",
     elementFolderName,
   );
 
@@ -28,7 +28,7 @@ export async function getElement(elementFolderName: string) {
     .sort((a) => (a.name === attributes.slug ? -1 : 1));
 
   const Component = await import(
-    `@/components/elements/${elementFolderName}/${attributes.slug}`
+    `@/elements/components/${elementFolderName}/${attributes.slug}`
   ).then((comp: { default: React.FC }) => comp.default);
 
   return {
@@ -39,7 +39,7 @@ export async function getElement(elementFolderName: string) {
 }
 
 export async function getAllElements() {
-  const root = path.resolve("src", "components", "elements");
+  const root = path.resolve("src", "elements", "components");
   const paths = fs.readdirSync(root);
 
   return await Promise.all(
