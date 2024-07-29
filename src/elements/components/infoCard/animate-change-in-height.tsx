@@ -1,13 +1,19 @@
 "use client";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 interface AnimateChangeInHeightProps {
   children: React.ReactNode;
+  className?: {
+    parent?: string;
+    child?: string;
+  };
 }
 
 export const AnimateChangeInHeight: React.FC<AnimateChangeInHeightProps> = ({
   children,
+  className,
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [height, setHeight] = useState<number | "auto">("auto");
@@ -31,12 +37,14 @@ export const AnimateChangeInHeight: React.FC<AnimateChangeInHeightProps> = ({
 
   return (
     <motion.div
-      className={"overflow-hidden"}
+      className={cn("overflow-hidden", className?.parent)}
       style={{ height }}
       animate={{ height }}
       transition={{ duration: 0.2 }}
     >
-      <div ref={containerRef}>{children}</div>
+      <div ref={containerRef} className={className?.child}>
+        {children}
+      </div>
     </motion.div>
   );
 };

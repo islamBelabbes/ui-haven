@@ -1,6 +1,7 @@
 import { TAttributes, TCategories } from "@/types";
 import fs from "fs";
 import path from "path";
+import { codeToHtml } from "shiki";
 
 export async function getElement(elementFolderName: string) {
   const componentPath = path.resolve(
@@ -27,12 +28,25 @@ export async function getElement(elementFolderName: string) {
     }))
     .sort((a) => (a.name === attributes.slug ? -1 : 1));
 
+  const formattedFiles = await Promise.all(
+    files.map(async (file) => {
+      const formattedCode = await codeToHtml(file.code, {
+        lang: "javascript",
+        theme: "ayu-dark",
+      });
+      return {
+        ...file,
+        code: formattedCode,
+      };
+    }),
+  );
+
   const Component = await import(
     `@/elements/components/${elementFolderName}/${attributes.slug}`
   ).then((comp: { default: React.FC }) => comp.default);
 
   return {
-    files,
+    files: formattedFiles,
     attributes,
     Component,
   };
