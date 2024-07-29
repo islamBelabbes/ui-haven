@@ -24,9 +24,7 @@ function ElementPreviewerCanvas() {
         },
       }}
     >
-      <motion.div className="flex w-full justify-center">
-        <CourseCard />
-      </motion.div>
+      <CourseCard />
     </motion.div>
   );
 }
