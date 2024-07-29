@@ -18,7 +18,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${manrope.className}`}>
+    <html lang="en" className={`${manrope.className} dark`}>
       <body>{children}</body>
     </html>
   );

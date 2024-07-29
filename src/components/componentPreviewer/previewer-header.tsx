@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { Button, buttonVariants } from "../ui/button";
 
 const breakPoints = [
   {
@@ -66,7 +67,7 @@ const breakPoints = [
 
 function PreviewerHeader() {
   return (
-    <div className="flex w-full items-center justify-between">
+    <div className="bg flex w-full items-center justify-between border p-2">
       <EditOnGitHub />
       <BreakPoints />
       <Tabs />
@@ -77,12 +78,17 @@ function PreviewerHeader() {
 const EditOnGitHub = () => {
   return (
     <a href="">
-      <div className="flex items-center gap-1 rounded bg-black/80 px-3 py-2 text-sm font-bold">
+      <div
+        className={buttonVariants({
+          variant: "outline",
+          className: "flex items-center gap-2",
+        })}
+      >
         <Image
           src="github.svg"
           width={96}
           height={96}
-          className="size-7"
+          className="size-6"
           alt="github logo"
         />
         <span>Edit on github</span>
@@ -96,12 +102,9 @@ const BreakPoints = () => {
     <div className="flex gap-1">
       {breakPoints.map(({ device, width, icon }) => {
         return (
-          <button
-            key={device}
-            className="flex size-9 items-center justify-center rounded bg-black/80"
-          >
+          <Button className="flex size-9 p-2" variant="outline">
             {icon}
-          </button>
+          </Button>
         );
       })}
     </div>
@@ -111,12 +114,8 @@ const BreakPoints = () => {
 const Tabs = () => {
   return (
     <div className="flex gap-1">
-      <button className="rounded bg-black/80 px-3 py-2 text-sm font-bold">
-        Preview
-      </button>
-      <button className="rounded bg-black/80 px-3 py-2 text-sm font-bold">
-        Code
-      </button>
+      <Button variant="outline">Code</Button>
+      <Button variant="outline">Preview</Button>
     </div>
   );
 };
