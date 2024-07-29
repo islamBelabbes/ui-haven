@@ -67,3 +67,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+  .code-previewer pre,
+  .code-previewer code .line {
+    padding: 4px !important;
+  }
+}
