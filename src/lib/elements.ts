@@ -11,7 +11,7 @@ export async function getElement(elementFolderName: string) {
   );
 
   const attributes = await import(
-    `@/components/elements/${elementFolderName}/attributes.ts`
+    `@/elements/components/${elementFolderName}/attributes.ts`
   ).then((file: { default: TAttributes }) => file.default);
 
   const componentContents = fs
