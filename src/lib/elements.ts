@@ -1,8 +1,8 @@
-import { TAttributes } from "@/types";
+import { type TAttributes } from "@/types";
 import fs from "fs";
 import path from "path";
 import { codeToHtml } from "shiki";
-import { TCategories } from "./categories";
+import { type TCategories } from "./categories";
 
 export type TElement = {
   files: {

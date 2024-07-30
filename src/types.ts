@@ -1,4 +1,4 @@
-import { TCategories } from "./lib/categories";
+import { type TCategories } from "./lib/categories";
 
 export type TAttributes = {
   name: string;

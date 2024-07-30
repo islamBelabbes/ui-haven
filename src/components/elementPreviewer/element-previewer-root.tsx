@@ -1,4 +1,4 @@
-import { TElement } from "@/lib/elements";
+import { type TElement } from "@/lib/elements";
 import React, { useState } from "react";
 
 export type TBreakPoints = 1024 | 768 | 390;

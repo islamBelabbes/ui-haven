@@ -1,8 +1,6 @@
 import ComponentPreviewer from "@/components/elementPreviewer/element-previewer";
 import { getAllElements } from "@/lib/elements";
 
-import * as Components from "@/elements/components";
-
 export default async function HomePage() {
   const comps = await getAllElements();
 

@@ -9,7 +9,7 @@ import {
   ElementPreviewerProvider,
   useElementPreviewer,
 } from "./element-previewer-root";
-import { TElement } from "@/lib/elements";
+import { type TElement } from "@/lib/elements";
 
 const CodePreviewer = dynamic(() => import("./element-previewer-code"), {
   loading: () => (
