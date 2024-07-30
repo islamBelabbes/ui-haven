@@ -136,7 +136,7 @@ const BreakPoints = () => {
   const { breakPoint, setBreakPoint, mod, element } = useElementPreviewer();
   return (
     <div
-      className={cn("hidden gap-1 md:flex", {
+      className={cn("hidden gap-1 lg:flex", {
         "cursor-not-allowed": mod !== "preview",
       })}
     >
