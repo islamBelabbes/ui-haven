@@ -2,6 +2,7 @@ import ComponentPreviewer from "@/components/elementPreviewer/element-previewer"
 import Installation from "@/components/installation";
 import { type TCategories, categories } from "@/lib/categories";
 import { getElementsByCategory } from "@/lib/elements";
+import { notFound } from "next/navigation";
 import React from "react";
 
 export const generateStaticParams = async () => {
@@ -13,7 +14,7 @@ export default async function CategoryPage({
 }: {
   params: { category: TCategories };
 }) {
-  if (!categories.includes(category)) return null;
+  if (!categories.includes(category)) notFound();
 
   const elements = await getElementsByCategory(category);
   return (
