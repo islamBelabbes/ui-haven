@@ -73,4 +73,9 @@
   .code-previewer code .line {
     padding: 4px !important;
   }
+
+  .installation pre,
+  .installation code .line {
+    padding: 10px !important;
+  }
 }
