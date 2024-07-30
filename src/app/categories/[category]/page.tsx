@@ -1,7 +1,11 @@
 import ComponentPreviewer from "@/components/elementPreviewer/element-previewer";
-import { TCategories, categories } from "@/lib/categories";
+import { type TCategories, categories } from "@/lib/categories";
 import { getElementsByCategory } from "@/lib/elements";
 import React from "react";
+
+export const generateStaticParams = async () => {
+  return categories;
+};
 
 export default async function CategoryPage({
   params: { category },

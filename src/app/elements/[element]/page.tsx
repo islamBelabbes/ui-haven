@@ -1,7 +1,13 @@
 import React from "react";
 
 import * as Elements from "@/elements/components";
-import { convertToPascalCase } from "@/lib/utils";
+import { convertCase, convertToPascalCase } from "@/lib/utils";
+import { getAllElements } from "@/lib/elements";
+
+export const generateStaticParams = async () => {
+  const elements = await getAllElements();
+  return elements.map((x) => convertCase(x.attributes.exported));
+};
 
 function ElementPage({ params: { element } }: { params: { element: string } }) {
   const convertedElement = convertToPascalCase(element);
