@@ -1,5 +1,5 @@
 "use client";
-import Previewer from "./element-previewer-canvas";
+import ElementPreviewerCanvas from "./element-previewer-canvas";
 import PreviewerHeader from "./element-previewer-header";
 import { AnimatePresence } from "framer-motion";
 import { AnimateChangeInHeight } from "@/components/animate-change-in-height";
@@ -28,10 +28,9 @@ function ComponentPreviewer({ element }: { element: TElement }) {
 }
 
 const ComponentPreviewerContent = () => {
-  const { mod, element } = useElementPreviewer();
+  const { mod } = useElementPreviewer();
   return (
     <div className="w-full max-w-7xl rounded">
-      <h1 className="my-3 font-bold">{element.attributes.name}</h1>
       <PreviewerHeader />
 
       <AnimateChangeInHeight
@@ -41,7 +40,7 @@ const ComponentPreviewerContent = () => {
         }}
       >
         <AnimatePresence mode="wait" initial={false}>
-          {mod === "preview" && <Previewer key={"preview"} />}
+          {mod === "preview" && <ElementPreviewerCanvas key={"preview"} />}
           {mod === "code" && <CodePreviewer key={"code"} />}
         </AnimatePresence>
       </AnimateChangeInHeight>
