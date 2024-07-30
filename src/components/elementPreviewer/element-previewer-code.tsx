@@ -18,13 +18,17 @@ function ElementPreviewerCode() {
       transition={{ duration: 0.3 }}
     >
       <Tabs defaultValue={element.files[0]?.name} className="w-full">
-        <TabsList className="rounded-none border bg-transparent">
-          {element.files.map((file) => (
-            <TabsTrigger value={file.name} key={file.name}>
-              {file.name}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+        <ScrollArea>
+          <TabsList className="rounded-none border bg-transparent">
+            {element.files.map((file) => (
+              <TabsTrigger value={file.name} key={file.name}>
+                {file.name}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+
+          <ScrollBar orientation="horizontal" />
+        </ScrollArea>
 
         {element.files.map((file) => (
           <TabsContent value={file.name} key={file.name}>
