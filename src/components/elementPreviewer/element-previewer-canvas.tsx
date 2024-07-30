@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { useElementPreviewer } from "./element-previewer-root";
 import Spinner from "../ui/spinner";
 import { convertCase } from "@/lib/utils";
-import useIsMounted from "@/hooks/use-is-mounted";
 
 function ElementPreviewerCanvas() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -57,12 +56,12 @@ function ElementPreviewerCanvas() {
   }, [isMounted]);
 
   return (
-    <div className="relative">
+    <div className="relative px-1">
       {isMounted && (
         <motion.iframe
           ref={iframeRef}
           src={`/elements/${convertCase(element.attributes.exported)}`}
-          className="my-2 rounded-lg bg-primary/10 p-6"
+          className="my-2 max-w-full rounded-lg bg-primary/10 p-6"
           style={{
             width: breakPoint,
             height: iframeHeight,
