@@ -3,20 +3,17 @@ import { motion } from "framer-motion";
 import { useElementPreviewer } from "./element-previewer-root";
 import Spinner from "../ui/spinner";
 import { convertCase } from "@/lib/utils";
+import useIsMounted from "@/hooks/use-is-mounted";
 
 function ElementPreviewerCanvas() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const { breakPoint, element } = useElementPreviewer();
   const [iframeHeight, setIframeHeight] = useState(300);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isClient, setIsClient] = useState(false);
+
+  const { breakPoint, element, isMounted } = useElementPreviewer();
 
   useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    if (isClient) {
+    if (isMounted) {
       const handleIframeLoad = () => {
         const iframe = iframeRef.current;
         if (iframe) {
@@ -63,32 +60,33 @@ function ElementPreviewerCanvas() {
         };
       }
     }
-  }, [isClient]);
+  }, [isMounted]);
 
-  if (!isClient) return null;
-  element;
   return (
     <div className="relative">
-      <motion.iframe
-        ref={iframeRef}
-        src={`/elements/${convertCase(element.attributes.exported)}`}
-        className="my-2 rounded-lg bg-primary/10 p-6"
-        style={{
-          width: breakPoint,
-          height: iframeHeight,
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ width: breakPoint, opacity: isLoaded ? 1 : 0 }}
-        transition={{
-          duration: 0.1,
-        }}
-        exit={{
-          opacity: 0,
-          transition: {
-            duration: 0.2,
-          },
-        }}
-      />
+      {isMounted && (
+        <motion.iframe
+          ref={iframeRef}
+          src={`/elements/${convertCase(element.attributes.exported)}`}
+          className="my-2 rounded-lg bg-primary/10 p-6"
+          style={{
+            width: breakPoint,
+            height: iframeHeight,
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ width: breakPoint, opacity: isLoaded ? 1 : 0 }}
+          transition={{
+            duration: 0.1,
+          }}
+          exit={{
+            opacity: 0,
+            transition: {
+              duration: 0.2,
+            },
+          }}
+        />
+      )}
+
       {!isLoaded && (
         <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 transform">
           <Spinner />

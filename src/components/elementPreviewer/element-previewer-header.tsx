@@ -173,7 +173,12 @@ const BreakPoints = () => {
 };
 
 const Mods = () => {
-  const { mod: currentMode, setMod, element } = useElementPreviewer();
+  const {
+    mod: currentMode,
+    setMod,
+    element,
+    isMounted,
+  } = useElementPreviewer();
 
   return (
     <div className="flex gap-3">
@@ -181,11 +186,15 @@ const Mods = () => {
         return (
           <div className="relative" key={mod}>
             <Button
+              disabled={!isMounted}
               onClick={() => setMod(mod)}
               variant="outline"
-              className={cn("hover:bg-transparent", {
-                "text-accent-foreground": mod === currentMode,
-              })}
+              className={cn(
+                "hover:bg-transparent disabled:relative disabled:z-30",
+                {
+                  "text-accent-foreground": mod === currentMode,
+                },
+              )}
             >
               <span className="relative z-20">{mod}</span>
             </Button>

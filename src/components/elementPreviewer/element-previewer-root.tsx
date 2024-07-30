@@ -1,3 +1,4 @@
+import useIsMounted from "@/hooks/use-is-mounted";
 import { type TElement } from "@/lib/elements";
 import React, { useState } from "react";
 
@@ -11,6 +12,7 @@ interface ElementPreviewerContextType {
   mod: TMods;
   setMod: (mod: TMods) => void;
   element: TElement;
+  isMounted: boolean;
 }
 
 export const ElementPreviewerContext = React.createContext<
@@ -32,10 +34,11 @@ export const ElementPreviewerProvider: React.FC<
 > = ({ children, element }) => {
   const [breakPoint, setBreakPoint] = useState<TBreakPoints>(390);
   const [mod, setMod] = useState<TMods>("preview");
+  const isMounted = useIsMounted();
 
   return (
     <ElementPreviewerContext.Provider
-      value={{ breakPoint, setBreakPoint, mod, setMod, element }}
+      value={{ breakPoint, setBreakPoint, mod, setMod, element, isMounted }}
     >
       {children}
     </ElementPreviewerContext.Provider>

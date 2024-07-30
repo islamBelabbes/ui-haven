@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useElementPreviewer } from "./element-previewer-root";
 import CopyButton from "../copy-button";
 
@@ -34,6 +34,8 @@ function ElementPreviewerCode() {
                 dangerouslySetInnerHTML={{ __html: file.code.formatted }}
                 className="code-previewer max-h-[400px]"
               />
+
+              <ScrollBar orientation="horizontal" />
             </ScrollArea>
           </TabsContent>
         ))}

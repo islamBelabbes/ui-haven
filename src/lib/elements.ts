@@ -32,7 +32,7 @@ export async function getElement(elementFolderName: string): Promise<TElement> {
     .readdirSync(componentPath)
     .filter((item) => item.endsWith(".tsx") || item.endsWith(".ts"));
 
-  let files = componentContents
+  const files = componentContents
     .filter((name) => name !== `attributes.ts`)
     .map((file) => ({
       name: file,
@@ -42,7 +42,7 @@ export async function getElement(elementFolderName: string): Promise<TElement> {
     .sort((a) => (a.name === attributes.slug ? -1 : 1));
 
   // get internal dependencies
-  files = [
+  const filesWithInternalDependencies = [
     ...files,
     ...attributes.dependencies.internal.map((file) => ({
       name: path.basename(path.join(file)),
@@ -52,7 +52,7 @@ export async function getElement(elementFolderName: string): Promise<TElement> {
   ];
 
   const formattedFiles = await Promise.all(
-    files.map(async (file) => {
+    filesWithInternalDependencies.map(async (file) => {
       const formattedCode = await codeToHtml(file.code, {
         lang: "javascript",
         theme: "ayu-dark",

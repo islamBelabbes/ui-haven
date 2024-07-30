@@ -1,13 +1,12 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import React, { useState } from "react";
 
 function CourseCard() {
   const [key, setKey] = useState(Math.random());
   return (
     <div className="relative max-w-[297px] rounded bg-white p-4">
-      <Image
+      <img
         src="/servers.png"
         width={297}
         height={43}

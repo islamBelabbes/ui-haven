@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { AnimateChangeInHeight } from "../../../components/animate-change-in-height";
+import { AnimateChangeInHeight } from "@/components/animate-change-in-height";
 
 function InfoCard() {
   const [isExpanded, setIsExpanded] = useState(false);
