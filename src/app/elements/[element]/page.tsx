@@ -17,7 +17,11 @@ function ElementPage({ params: { element } }: { params: { element: string } }) {
 
   const Element = Elements[convertedElement as keyof typeof Elements];
   if (!Element) notFound();
-  return <Element />;
+  return (
+    <div className="m-[10px] flex items-center justify-center">
+      <Element />
+    </div>
+  );
 }
 
 export default ElementPage;

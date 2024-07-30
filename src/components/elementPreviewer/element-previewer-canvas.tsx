@@ -22,16 +22,10 @@ function ElementPreviewerCanvas() {
           if (iframeDoc) {
             const html = iframeDoc.querySelector("html");
             if (html) {
-              html.style.margin = "10px";
-              html.style.display = "flex";
-              html.style.justifyContent = "center";
-              html.style.alignItems = "center";
-              html.style.overflow = "hidden";
-
               // Set up MutationObserver
               const observer = new MutationObserver(() => {
                 const contentHeight = iframeDoc.body.scrollHeight;
-                setIframeHeight(contentHeight + 24 * 3);
+                setIframeHeight(contentHeight + 72);
               });
 
               observer.observe(iframeDoc.body, {

@@ -18,7 +18,7 @@ export default async function CategoryPage({
 
   const elements = await getElementsByCategory(category);
   return (
-    <div className="mx-auto grid max-w-7xl gap-5 p-2">
+    <div className="mx-auto grid min-h-screen max-w-7xl gap-5 p-2">
       {elements.map((element) => (
         <div
           key={element.attributes.slug}
