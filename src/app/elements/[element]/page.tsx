@@ -6,7 +6,9 @@ import { getAllElements } from "@/lib/elements";
 
 export const generateStaticParams = async () => {
   const elements = await getAllElements();
-  return elements.map((x) => convertCase(x.attributes.exported));
+  return elements.map((element) => ({
+    element: convertCase(element.attributes.exported),
+  }));
 };
 
 function ElementPage({ params: { element } }: { params: { element: string } }) {

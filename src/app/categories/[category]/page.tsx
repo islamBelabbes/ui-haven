@@ -4,7 +4,7 @@ import { getElementsByCategory } from "@/lib/elements";
 import React from "react";
 
 export const generateStaticParams = async () => {
-  return categories;
+  return categories.map((category) => ({ category }));
 };
 
 export default async function CategoryPage({
