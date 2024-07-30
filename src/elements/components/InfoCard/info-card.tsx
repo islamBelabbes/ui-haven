@@ -44,21 +44,22 @@ function InfoCard() {
 
       {/* About */}
       <div className="font-semibold text-[#191D23]">
-        <h2 className="mb-1 leading-[22px]">About</h2>
-        <AnimateChangeInHeight>
-          <div className="inline-block">
-            <p
-              className="mb-1 line-clamp-3 font-normal leading-[22px] transition"
-              style={{
-                WebkitLineClamp: isExpanded ? "unset" : undefined,
-              }}
-            >
-              The Bengal tiger is a population of the Panthera tigris tigris
-              subspecies. It ranks among the biggest wild cats alive today. It
-              is considered to belong to the world&lsquo;s charismatic
-              megafauna.
-            </p>
-          </div>
+        <h2 className="leading-[22px]">About</h2>
+        <AnimateChangeInHeight
+          className={{
+            parent: "my-1",
+          }}
+        >
+          <p
+            className="line-clamp-3 font-normal leading-[22px] transition"
+            style={{
+              WebkitLineClamp: isExpanded ? "unset" : undefined,
+            }}
+          >
+            The Bengal tiger is a population of the Panthera tigris tigris
+            subspecies. It ranks among the biggest wild cats alive today. It is
+            considered to belong to the world&lsquo;s charismatic megafauna.
+          </p>
         </AnimateChangeInHeight>
         <button
           className="flex items-center gap-1 text-sm/[19px]"

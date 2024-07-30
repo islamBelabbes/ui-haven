@@ -7,7 +7,7 @@ import { convertCase } from "@/lib/utils";
 function ElementPreviewerCanvas() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const { breakPoint, element } = useElementPreviewer();
-  const [iframeHeight, setIframeHeight] = useState(500);
+  const [iframeHeight, setIframeHeight] = useState(300);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isClient, setIsClient] = useState(false);
 
