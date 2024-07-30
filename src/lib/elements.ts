@@ -1,9 +1,22 @@
-import { TAttributes, TCategories } from "@/types";
+import { TAttributes } from "@/types";
 import fs from "fs";
 import path from "path";
 import { codeToHtml } from "shiki";
+import { TCategories } from "./categories";
 
-export async function getElement(elementFolderName: string) {
+export type TElement = {
+  files: {
+    code: {
+      formatted: string;
+      raw: string;
+    };
+    name: string;
+    language: string | null;
+  }[];
+  attributes: TAttributes;
+};
+
+export async function getElement(elementFolderName: string): Promise<TElement> {
   const componentPath = path.resolve(
     "src",
     "elements",
@@ -19,7 +32,7 @@ export async function getElement(elementFolderName: string) {
     .readdirSync(componentPath)
     .filter((item) => item.endsWith(".tsx") || item.endsWith(".ts"));
 
-  const files = componentContents
+  let files = componentContents
     .filter((name) => name !== `attributes.ts`)
     .map((file) => ({
       name: file,
@@ -27,6 +40,16 @@ export async function getElement(elementFolderName: string) {
       language: file.split(".")[1] ?? null,
     }))
     .sort((a) => (a.name === attributes.slug ? -1 : 1));
+
+  // get internal dependencies
+  files = [
+    ...files,
+    ...attributes.dependencies.internal.map((file) => ({
+      name: path.basename(path.join(file)),
+      code: fs.readFileSync(path.join(file), "utf-8"),
+      language: file.split(".")[1] ?? null,
+    })),
+  ];
 
   const formattedFiles = await Promise.all(
     files.map(async (file) => {
@@ -36,7 +59,10 @@ export async function getElement(elementFolderName: string) {
       });
       return {
         ...file,
-        code: formattedCode,
+        code: {
+          formatted: formattedCode,
+          raw: file.code,
+        },
       };
     }),
   );

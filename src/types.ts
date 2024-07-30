@@ -1,4 +1,4 @@
-export type TCategories = "Cards" | "Inputs";
+import { TCategories } from "./lib/categories";
 
 export type TAttributes = {
   name: string;

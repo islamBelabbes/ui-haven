@@ -8,14 +8,11 @@ export default async function HomePage() {
 
   return (
     <main className="p-4 text-white">
-      <div className="flex flex-wrap items-start gap-3">
-        {comps.map(({ attributes: { slug, exported } }) => {
-          const Comp = Components[exported as keyof typeof Components];
-          return <Comp key={slug} />;
-        })}
+      <div className="mx-auto grid max-w-7xl">
+        {comps.map((x) => (
+          <ComponentPreviewer element={x} key={x.attributes.slug} />
+        ))}
       </div>
-
-      <ComponentPreviewer />
     </main>
   );
 }

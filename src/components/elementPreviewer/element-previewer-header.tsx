@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Button, buttonVariants } from "../ui/button";
-import { cn } from "@/lib/utils";
+import cn from "@/lib/cn";
 
 import { motion } from "framer-motion";
 import {
@@ -9,6 +9,8 @@ import {
   type TMods,
   useElementPreviewer,
 } from "./element-previewer-root";
+import { REPO_URL } from "@/lib/constants";
+import { convertCase } from "@/lib/utils";
 
 const breakPoints: {
   device: string;
@@ -82,40 +84,59 @@ const mods: TMods[] = ["preview", "code"];
 function ElementPreviewerHeader() {
   return (
     <div className="bg flex w-full items-center justify-between border p-2">
-      <EditOnGitHub />
+      <LeftButtons />
       <BreakPoints />
       <Mods />
     </div>
   );
 }
 
-const EditOnGitHub = () => {
+const LeftButtons = () => {
+  const { element } = useElementPreviewer();
+  const githubUrl = `${REPO_URL}/blob/main/src/elements/components/${element.attributes.exported}`;
+  const liveUrl = `/elements/${convertCase(element.attributes.exported)}`;
   return (
-    <a href="">
-      <div
-        className={buttonVariants({
-          variant: "outline",
-          className: "flex items-center gap-2",
-        })}
-      >
-        <Image
-          src="github.svg"
-          width={96}
-          height={96}
-          className="size-6"
-          alt="github logo"
-        />
-        <span>Edit on github</span>
+    <div className="flex gap-3">
+      <div>
+        <a href={githubUrl} target="_blank">
+          <div
+            className={buttonVariants({
+              variant: "outline",
+              className: "flex items-center gap-2",
+            })}
+          >
+            <Image
+              src="/github.svg"
+              width={96}
+              height={96}
+              className="size-6"
+              alt="github logo"
+            />
+          </div>
+        </a>
       </div>
-    </a>
+
+      <div>
+        <a href={liveUrl} target="_blank">
+          <div
+            className={buttonVariants({
+              variant: "outline",
+              className: "flex items-center gap-2",
+            })}
+          >
+            <ArrowUpRightIcon />
+          </div>
+        </a>
+      </div>
+    </div>
   );
 };
 
 const BreakPoints = () => {
-  const { breakPoint, setBreakPoint, mod } = useElementPreviewer();
+  const { breakPoint, setBreakPoint, mod, element } = useElementPreviewer();
   return (
     <div
-      className={cn("flex gap-1", {
+      className={cn("hidden gap-1 md:flex", {
         "cursor-not-allowed": mod !== "preview",
       })}
     >
@@ -141,7 +162,7 @@ const BreakPoints = () => {
                   bounce: 0.5,
                 }}
                 className="absolute inset-0 z-10 rounded bg-accent text-accent-foreground"
-                layoutId="breakPoint-switcher"
+                layoutId={`${element.attributes.exported}-breakPoint-switcher`}
               />
             )}
           </div>
@@ -152,7 +173,7 @@ const BreakPoints = () => {
 };
 
 const Mods = () => {
-  const { mod: currentMode, setMod } = useElementPreviewer();
+  const { mod: currentMode, setMod, element } = useElementPreviewer();
 
   return (
     <div className="flex gap-3">
@@ -172,7 +193,7 @@ const Mods = () => {
             {mod === currentMode && (
               <motion.div
                 className="absolute inset-0 z-10 cursor-pointer rounded bg-accent"
-                layoutId="mod-switcher"
+                layoutId={`${element.attributes.exported}-mod-switcher`}
                 transition={{
                   duration: 0.5,
                   type: "spring",
@@ -184,6 +205,25 @@ const Mods = () => {
         );
       })}
     </div>
+  );
+};
+
+const ArrowUpRightIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="size-6"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"
+      />
+    </svg>
   );
 };
 
