@@ -7,7 +7,7 @@ import Link from "next/link";
 
 function Header() {
   return (
-    <header className="flex items-center justify-between border bg-background px-3 py-[18px] md:min-h-[88px] md:px-20">
+    <header className="flex h-[88px] items-center justify-between border bg-background px-3 py-[18px] md:px-20">
       <motion.div
         className="text-3xl font-bold"
         variants={fadeIn}
