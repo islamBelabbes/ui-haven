@@ -15,15 +15,12 @@ const manrope = Manrope({
   preload: false,
 });
 
-export default function RootLayout({
+export default function MainLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${manrope.className} dark`}>
-      <body>
-        <Header />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
