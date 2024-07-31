@@ -6,7 +6,7 @@ const att: TAttributes = {
   exported: "InfoCard", // the Component Exported Name
   category: "cards", // category (cards / inputs / buttons ... ect)
   dependencies: {
-    external: ["framer-motion"], // any external dep (aka any 3rd party library)
+    external: ["framer-motion", "clsx", "tailwind-merge"], // any external dep (aka any 3rd party library)
     internal: ["src/components/animate-change-in-height.tsx", "src/lib/cn.ts"], // any internal dep (aka shaded components)
   },
 };
