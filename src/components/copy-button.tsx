@@ -16,9 +16,7 @@ export default function CopyButton({
     if (isCopied) return;
     navigator.clipboard.writeText(text);
     setIsCopied(true);
-    setTimeout(() => {
-      setIsCopied(false);
-    }, 1000);
+    setTimeout(() => setIsCopied(false), 1000);
   };
 
   return (
@@ -28,6 +26,7 @@ export default function CopyButton({
         className,
       )}
       onClick={handleCopy}
+      disabled={isCopied}
     >
       <motion.div
         key={isCopied ? "check" : "copy"}
