@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useElementPreviewer } from "./element-previewer-root";
@@ -10,13 +9,7 @@ function ElementPreviewerCode() {
   if (!Array.isArray(element.files)) return null;
 
   return (
-    <motion.div
-      className="w-full"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className="w-full">
       <Tabs defaultValue={element.files[0]?.name} className="w-full">
         <ScrollArea>
           <TabsList className="rounded-none border bg-transparent">
@@ -44,7 +37,7 @@ function ElementPreviewerCode() {
           </TabsContent>
         ))}
       </Tabs>
-    </motion.div>
+    </div>
   );
 }
 
