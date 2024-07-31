@@ -15,7 +15,7 @@ function ProfileCard() {
           Ronald Richards
         </span>
 
-        <div className="mt-[6px] flex items-center justify-center gap-[2px]">
+        <div className="mt-[6px] flex cursor-pointer items-center justify-center gap-[2px]">
           <div className="rotate-[-28.13deg]">
             <MessageAvatar />
           </div>

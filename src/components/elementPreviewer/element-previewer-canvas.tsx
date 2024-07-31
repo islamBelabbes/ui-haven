@@ -24,7 +24,7 @@ function ElementPreviewerCanvas() {
               // Set up MutationObserver
               const observer = new MutationObserver(() => {
                 const contentHeight = iframeDoc.body.scrollHeight;
-                setIframeHeight(contentHeight + 72);
+                setIframeHeight(contentHeight + 75);
               });
 
               observer.observe(iframeDoc.body, {
@@ -35,7 +35,7 @@ function ElementPreviewerCanvas() {
 
               // Initial height set
               const contentHeight = iframeDoc.body.scrollHeight;
-              setIframeHeight(contentHeight + 24 * 3);
+              setIframeHeight(contentHeight + 75);
               setIsLoaded(true);
 
               // Clean up observer on unmount
