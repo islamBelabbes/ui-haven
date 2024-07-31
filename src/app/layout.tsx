@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 
 import { Manrope } from "next/font/google";
 import { type Metadata } from "next";
+import Header from "@/components/header";
 
 export const metadata: Metadata = {
   title: "Ui-Haven",
@@ -19,7 +20,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${manrope.className} dark`}>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
