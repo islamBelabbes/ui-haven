@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import cn from "@/lib/cn";
 
 export default function CopyButton({
@@ -12,9 +12,9 @@ export default function CopyButton({
   className?: string;
 }) {
   const [isCopied, setIsCopied] = useState(false);
-  const handleCopy = () => {
+  const handleCopy = async () => {
     if (isCopied) return;
-    navigator.clipboard.writeText(text);
+    await navigator.clipboard.writeText(text);
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 1000);
   };
@@ -28,15 +28,17 @@ export default function CopyButton({
       onClick={handleCopy}
       disabled={isCopied}
     >
-      <motion.div
-        key={isCopied ? "check" : "copy"}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.8 }}
-        transition={{ duration: 0.3 }}
-      >
-        {isCopied ? <CheckIcon /> : <CopyIcon />}
-      </motion.div>
+      <AnimatePresence mode="wait" initial={false}>
+        <motion.div
+          key={isCopied ? "check" : "copy"}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.1 } }}
+          transition={{ duration: 0.3 }}
+        >
+          {isCopied ? <CheckIcon /> : <CopyIcon />}
+        </motion.div>
+      </AnimatePresence>
     </button>
   );
 }
