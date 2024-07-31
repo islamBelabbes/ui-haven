@@ -1,15 +1,24 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { useElementPreviewer } from "./element-previewer-root";
 import CopyButton from "../copy-button";
+import { fadeIn, transition } from "@/lib/motion";
 
 function ElementPreviewerCode() {
   const { element } = useElementPreviewer();
   if (!Array.isArray(element.files)) return null;
 
   return (
-    <div className="w-full">
+    <motion.div
+      className="w-full"
+      variants={fadeIn}
+      initial="hidden"
+      animate="visible"
+      exit={{ opacity: 0, transition: { duration: 0.1 } }}
+      transition={transition}
+    >
       <Tabs defaultValue={element.files[0]?.name} className="w-full">
         <ScrollArea>
           <TabsList className="rounded-none border bg-transparent">
@@ -37,7 +46,7 @@ function ElementPreviewerCode() {
           </TabsContent>
         ))}
       </Tabs>
-    </div>
+    </motion.div>
   );
 }
 

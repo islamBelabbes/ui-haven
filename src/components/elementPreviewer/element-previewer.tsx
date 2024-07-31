@@ -40,8 +40,10 @@ const ComponentPreviewerContent = () => {
           child: "flex w-full items-center justify-center",
         }}
       >
-        {mod === "preview" && <ElementPreviewerCanvas key={"preview"} />}
-        {mod === "code" && <CodePreviewer key={"code"} />}
+        <AnimatePresence mode="wait" initial={false}>
+          {mod === "preview" && <ElementPreviewerCanvas key={"preview"} />}
+          {mod === "code" && <CodePreviewer key={"code"} />}
+        </AnimatePresence>
       </AnimateChangeInHeight>
     </div>
   );
