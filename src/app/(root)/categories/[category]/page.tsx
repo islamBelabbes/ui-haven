@@ -21,7 +21,7 @@ export default async function CategoryPage({
     <div className="mx-auto grid min-h-screen max-w-7xl gap-5 p-2">
       {elements.map((element) => (
         <div
-          key={element.attributes.slug}
+          key={element.attributes.exported}
           className="overflow-hidden [&:not(:last-child)]:border-b-2 [&:not(:last-child)]:pb-3"
         >
           <h1 className="my-3 font-bold">{element.attributes.name}</h1>

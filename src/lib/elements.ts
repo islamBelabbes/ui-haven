@@ -3,6 +3,7 @@ import fs from "fs";
 import path from "path";
 import { codeToHtml } from "shiki";
 import { type TCategories } from "./categories";
+import { convertCase } from "./utils";
 
 export type TElement = {
   files: {
@@ -39,7 +40,8 @@ export async function getElement(elementFolderName: string): Promise<TElement> {
       code: fs.readFileSync(path.join(componentPath, file), "utf-8"),
       language: file.split(".")[1] ?? null,
     }))
-    .sort((a) => (a.name === attributes.slug ? -1 : 1));
+    .filter((file) => file.code.length)
+    .sort((a) => (a.name === convertCase(a.name) ? -1 : 1));
 
   // get internal dependencies
   const filesWithInternalDependencies = [

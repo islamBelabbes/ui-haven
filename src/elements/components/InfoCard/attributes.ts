@@ -2,7 +2,6 @@ import { type TAttributes } from "@/types";
 
 const att: TAttributes = {
   name: "Info Card", // the Component Heading name
-  slug: "info-card.tsx", // the Component Slug (aka the main React file name)
   exported: "InfoCard", // the Component Exported Name
   category: "cards", // category (cards / inputs / buttons ... ect)
   dependencies: {
