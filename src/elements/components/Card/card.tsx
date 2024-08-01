@@ -1,4 +1,4 @@
-import React from "react";
+import Button from "@/elements/shared/button";
 
 function Card() {
   return (
@@ -17,9 +17,7 @@ function Card() {
         purus sit amet luctus venenatis.
       </p>
 
-      <button className="mt-4 min-h-11 w-full rounded bg-emerald-700 px-3 py-[6px] text-base/5 font-medium text-white">
-        View Details
-      </button>
+      <Button className="font-medium">View Details</Button>
     </div>
   );
 }

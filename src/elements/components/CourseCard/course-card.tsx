@@ -1,4 +1,5 @@
 "use client";
+import Button from "@/elements/shared/button";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 
@@ -66,12 +67,9 @@ function CourseCard() {
           electronic information security.
         </p>
 
-        <button
-          className="mt-4 min-h-11 w-full rounded bg-emerald-700 px-3 py-[6px] text-base/5 font-semibold text-white"
-          onClick={() => setKey(Math.random())}
-        >
+        <Button className="font-semibold" onClick={() => setKey(Math.random())}>
           Continue
-        </button>
+        </Button>
       </div>
     </div>
   );
