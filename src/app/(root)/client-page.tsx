@@ -6,7 +6,7 @@ import { fadeIn, transition } from "@/lib/motion";
 import Link from "next/link";
 
 const text = "Speed Up Your Project";
-const subText = "+60 pre built components";
+const subText = "+60 pre-built components";
 
 const scaleInCenter: Variants = {
   hidden: { opacity: 1, scale: 0 },
