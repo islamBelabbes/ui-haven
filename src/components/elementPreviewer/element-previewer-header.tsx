@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import { Button, buttonVariants } from "../ui/button";
 import cn from "@/lib/cn";
 

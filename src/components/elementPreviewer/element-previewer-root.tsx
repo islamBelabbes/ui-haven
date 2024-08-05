@@ -1,6 +1,6 @@
 import useIsMounted from "@/hooks/use-is-mounted";
 import { type TElement } from "@/lib/elements";
-import React, { useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 export type TBreakPoints = 1024 | 768 | 390;
 
@@ -15,12 +15,12 @@ interface ElementPreviewerContextType {
   isMounted: boolean;
 }
 
-export const ElementPreviewerContext = React.createContext<
+export const ElementPreviewerContext = createContext<
   ElementPreviewerContextType | undefined
 >(undefined);
 
 export const useElementPreviewer = () => {
-  const context = React.useContext(ElementPreviewerContext);
+  const context = useContext(ElementPreviewerContext);
   if (context === undefined) {
     throw new Error(
       "useElementPreviewer must be used within a ElementPreviewerProvider",

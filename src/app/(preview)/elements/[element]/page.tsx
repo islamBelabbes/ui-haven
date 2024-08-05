@@ -1,5 +1,3 @@
-import React from "react";
-
 import * as Elements from "@/elements/components";
 import { convertCase, convertToPascalCase } from "@/lib/utils";
 import { getAllElements } from "@/lib/elements";

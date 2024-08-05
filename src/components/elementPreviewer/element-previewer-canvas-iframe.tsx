@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useElementPreviewer } from "./element-previewer-root";
 import Spinner from "../ui/spinner";

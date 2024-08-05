@@ -1,4 +1,3 @@
-import React from "react";
 import { codeToHtml } from "shiki";
 import CopyButton from "./copy-button";
 

@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
 import { AnimateChangeInHeight } from "@/components/animate-change-in-height";
+import RotatableArrow from "@/elements/shared/rotatable-arrow";
 
 function InfoCard() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -66,12 +66,7 @@ function InfoCard() {
           onClick={toggleExpanded}
         >
           <span>{isExpanded ? "Show Less" : "Show More"}</span>
-          <motion.div
-            animate={{ rotate: isExpanded ? 180 : undefined }}
-            transition={{ duration: 0.3 }}
-          >
-            <ShowMoreIcon />
-          </motion.div>
+          <RotatableArrow isUp={isExpanded} />
         </button>
       </div>
     </div>

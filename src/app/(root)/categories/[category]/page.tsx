@@ -3,7 +3,6 @@ import Installation from "@/components/installation";
 import { type TCategories, categories } from "@/lib/categories";
 import { getElementsByCategory } from "@/lib/elements";
 import { notFound } from "next/navigation";
-import React from "react";
 
 export const generateStaticParams = async () => {
   return categories.map((category) => ({ category }));

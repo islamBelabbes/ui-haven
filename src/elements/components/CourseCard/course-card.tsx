@@ -1,7 +1,7 @@
 "use client";
 import Button from "@/elements/shared/button";
 import { motion } from "framer-motion";
-import React, { useState } from "react";
+import { useState } from "react";
 
 function CourseCard() {
   const [key, setKey] = useState(Math.random());

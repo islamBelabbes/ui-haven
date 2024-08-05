@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { buttonVariants } from "./ui/button";
 import { motion } from "framer-motion";
 import { fadeIn, transition } from "@/lib/motion";
