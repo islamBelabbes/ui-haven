@@ -5,6 +5,9 @@ import { motion, type Variants, Transition, cubicBezier } from "framer-motion";
 import { fadeIn, transition } from "@/lib/motion";
 import Link from "next/link";
 
+const text = "Speed Up Your Project";
+const subText = "+60 pre built components";
+
 const scaleInCenter: Variants = {
   hidden: { opacity: 1, scale: 0 },
   visible: {
@@ -12,19 +15,7 @@ const scaleInCenter: Variants = {
     transition: {
       ease: cubicBezier(0.25, 0.46, 0.45, 0.94),
       duration: 0.5,
-      delay: 0.5,
-    },
-  },
-};
-
-const scaleInHorLeft: Variants = {
-  hidden: { opacity: 1, scaleX: 0, originX: "0% 0%" },
-  visible: {
-    scaleX: 1,
-    originX: "0% 0%",
-    transition: {
-      ease: cubicBezier(0.25, 0.46, 0.45, 0.94),
-      duration: 0.5,
+      delay: (text.length + subText.length) * 0.05,
     },
   },
 };
@@ -66,17 +57,8 @@ export default function ClientPage() {
         />
       </motion.div>
       <div aria-hidden className="absolute inset-0 bg-black/90" />
-
       <div className="relative flex flex-col items-center gap-6 md:mt-32">
-        <motion.h1
-          variants={scaleInHorLeft}
-          initial="hidden"
-          animate="visible"
-          className="text-center text-3xl font-medium md:text-6xl/[4.9375rem]"
-        >
-          Speed Up Your Project <br />{" "}
-          <span className="text-emerald-700">+60</span> pre built components
-        </motion.h1>
+        <LetterByLetterAnimation />
 
         <motion.div
           variants={scaleInCenter}
@@ -134,3 +116,49 @@ const Technologies = () => {
     </div>
   );
 };
+
+// Animation variants
+const letterAnimation = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.05, // Stagger effect
+    },
+  }),
+};
+
+const LetterByLetterAnimation = () => (
+  <motion.h1 className="text-center text-3xl font-medium md:text-6xl/[4.9375rem]">
+    {/* Main text */}
+    {text.split("").map((letter, index) => (
+      <motion.span
+        key={index}
+        variants={letterAnimation}
+        initial="hidden"
+        animate="visible"
+        custom={index} // Pass the index as a custom prop for stagger
+        style={{ display: "inline-block" }} // Ensure letters are inline
+      >
+        {letter === " " ? "\u00A0" : letter}{" "}
+        {/* Non-breaking space for spaces */}
+      </motion.span>
+    ))}
+    <br />
+    {/* Subtext with different styling */}
+    {subText.split("").map((letter, index) => (
+      <motion.span
+        key={index}
+        variants={letterAnimation}
+        initial="hidden"
+        animate="visible"
+        custom={index + text.length} // Offset index for delay calculation
+        className="text-emerald-700"
+        style={{ display: "inline-block" }}
+      >
+        {letter === " " ? "\u00A0" : letter}
+      </motion.span>
+    ))}
+  </motion.h1>
+);
