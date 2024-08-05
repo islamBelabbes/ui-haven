@@ -8,6 +8,7 @@ function ProfileCard() {
           width={300}
           height={300}
           className="absolute inset-0 size-full rounded-full"
+          alt="avatar"
         />
       </div>
       <div className="mt-4">

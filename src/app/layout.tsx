@@ -2,7 +2,6 @@ import "@/styles/globals.css";
 
 import { Manrope } from "next/font/google";
 import { type Metadata } from "next";
-import Header from "@/components/header";
 
 export const metadata: Metadata = {
   title: "Ui-Haven",

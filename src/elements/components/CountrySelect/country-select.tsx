@@ -2,7 +2,7 @@
 import { useMemo, useState } from "react";
 
 import {
-  TCountryCode,
+  type TCountryCode,
   getCountryDataList,
   getCountryData,
 } from "countries-list";

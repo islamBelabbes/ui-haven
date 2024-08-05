@@ -10,7 +10,7 @@ import {
 } from "./element-previewer-root";
 import { type TElement } from "@/lib/elements";
 import ElementPreviewerCanvas from "./element-previewer-canvas";
-import ElementPreviewerCanvasIframe from "./element-previewer-canvas-iframe";
+// import ElementPreviewerCanvasIframe from "./element-previewer-canvas-iframe";
 
 const CodePreviewer = dynamic(() => import("./element-previewer-code"), {
   loading: () => (

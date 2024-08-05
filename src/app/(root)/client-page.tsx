@@ -1,7 +1,7 @@
 "use client";
 import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
-import { motion, type Variants, Transition, cubicBezier } from "framer-motion";
+import { motion, type Variants, cubicBezier } from "framer-motion";
 import { fadeIn, transition } from "@/lib/motion";
 import Link from "next/link";
 
