@@ -20,6 +20,17 @@ const scaleInCenter: Variants = {
   },
 };
 
+const letterAnimation = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.05, // Stagger effect
+    },
+  }),
+};
+
 const TECHNOLOGIES = [
   {
     Logo: "/tailwind-css.svg",
@@ -39,9 +50,9 @@ const TECHNOLOGIES = [
   },
 ];
 
-export default function ClientPage() {
+export default function HeroBanner() {
   return (
-    <>
+    <div className="relative flex h-[calc(100vh-88px)] items-center justify-center md:items-start">
       <motion.div
         variants={fadeIn}
         initial="hidden"
@@ -74,7 +85,7 @@ export default function ClientPage() {
 
         <Technologies />
       </div>
-    </>
+    </div>
   );
 }
 
@@ -115,18 +126,6 @@ const Technologies = () => {
       ))}
     </div>
   );
-};
-
-// Animation variants
-const letterAnimation = {
-  hidden: { opacity: 0, y: 50 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.05, // Stagger effect
-    },
-  }),
 };
 
 const LetterByLetterAnimation = () => (
