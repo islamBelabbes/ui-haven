@@ -5,7 +5,7 @@ import { getElementsByCategory } from "@/lib/elements";
 import { notFound } from "next/navigation";
 
 export const generateStaticParams = async () => {
-  return categories.map((category) => ({ category }));
+  return categories.map((category) => ({ category: category.name }));
 };
 
 export default async function CategoryPage({
@@ -13,7 +13,7 @@ export default async function CategoryPage({
 }: {
   params: { category: TCategories };
 }) {
-  if (!categories.includes(category)) notFound();
+  if (!categories.some((cat) => cat.name === category)) notFound();
 
   const elements = await getElementsByCategory(category);
   return (
