@@ -1,10 +1,7 @@
 "use client";
-
-import React from "react";
 import { motion } from "framer-motion";
-function template({ children }: { children: React.ReactNode }) {
-  console.log("template");
 
+function template({ children }: { children: React.ReactNode }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
