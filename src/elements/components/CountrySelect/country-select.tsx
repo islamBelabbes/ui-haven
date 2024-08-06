@@ -15,7 +15,7 @@ import cn from "@/lib/cn";
 import RotatableArrow from "@/elements/shared/rotatable-arrow";
 
 export default function CountrySelect() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [selectedCountryIso2, setSelectedCountryIso2] =
     useState<TCountryCode | null>(null);
 
@@ -72,15 +72,15 @@ export default function CountrySelect() {
                     value={country.iso2}
                     key={country.iso2}
                     className={cn(
-                      "mb-2 flex w-full cursor-pointer items-start gap-3 rounded p-2",
+                      "mb-2 flex w-full cursor-pointer items-start gap-3 rounded p-2 focus-visible:bg-gray-100/60 focus-visible:outline-none",
                       {
-                        "bg-[#F7F8F9]": selectedCountryIso2 === country.iso2,
+                        "bg-gray-100/60": selectedCountryIso2 === country.iso2,
                       },
                     )}
                   >
                     <Flag ios2={country.iso2} />
                     <div>
-                      <span className="line-clamp-1 leading-[15.6px]">
+                      <span className="line-clamp-1 leading-5">
                         {country.name}
                       </span>
                       <span className="mt-[6px] block text-xs font-light text-slate-500">
