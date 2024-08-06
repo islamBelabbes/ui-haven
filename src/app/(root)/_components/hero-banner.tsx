@@ -53,6 +53,7 @@ const TECHNOLOGIES = [
 export default function HeroBanner() {
   return (
     <div className="relative flex h-[calc(100vh-88px)] items-center justify-center md:items-start">
+      {/* Hero Background */}
       <motion.div
         variants={fadeIn}
         initial="hidden"
@@ -67,22 +68,30 @@ export default function HeroBanner() {
           className="absolute left-0 top-0 h-full w-full object-cover bg-blend-multiply"
         />
       </motion.div>
+
+      {/* Overlay */}
       <div aria-hidden className="absolute inset-0 bg-black/90" />
+
+      {/* Hero Content */}
       <div className="relative flex flex-col items-center gap-6 md:mt-32">
+        {/* Letter by letter animation */}
         <LetterByLetterAnimation />
 
-        <motion.div
-          variants={scaleInCenter}
-          initial="hidden"
-          animate="visible"
+        {/* Start building now button */}
+        <motion.a
+          href="#categories-list"
           className={buttonVariants({
             variant: "secondary",
             className: "w-fit px-8 py-4",
           })}
+          variants={scaleInCenter}
+          initial="hidden"
+          animate="visible"
         >
-          <Link href="/categories/cards">Start Building now</Link>
-        </motion.div>
+          Start Building now
+        </motion.a>
 
+        {/* Technologies */}
         <Technologies />
       </div>
     </div>

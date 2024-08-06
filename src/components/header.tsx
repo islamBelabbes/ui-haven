@@ -24,7 +24,7 @@ function Header() {
         initial="hidden"
         animate="visible"
         transition={transition}
-        href="#"
+        href="#categories-list"
       >
         Get Started
       </motion.a>

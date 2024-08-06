@@ -8,7 +8,10 @@ import Image from "next/image";
 function CategoriesList() {
   return (
     <Container>
-      <ul className="grid items-center gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <ul
+        className="grid items-center gap-5 md:grid-cols-2 lg:grid-cols-3"
+        id="categories-list"
+      >
         {categories.map((category) => (
           <li key={category.name}>
             <Link href={`/categories/${category.name}`}>
