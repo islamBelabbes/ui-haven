@@ -15,7 +15,7 @@ import cn from "@/lib/cn";
 import RotatableArrow from "@/elements/shared/rotatable-arrow";
 
 export default function CountrySelect() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedCountryIso2, setSelectedCountryIso2] =
     useState<TCountryCode | null>(null);
 
