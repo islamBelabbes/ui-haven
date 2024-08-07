@@ -67,7 +67,10 @@ function CourseCard() {
           electronic information security.
         </p>
 
-        <Button className="font-semibold" onClick={() => setKey(Math.random())}>
+        <Button
+          className="mt-4 font-semibold"
+          onClick={() => setKey(Math.random())}
+        >
           Continue
         </Button>
       </div>

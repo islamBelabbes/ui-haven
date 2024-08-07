@@ -17,7 +17,7 @@ function Card() {
         purus sit amet luctus venenatis.
       </p>
 
-      <Button className="font-medium">View Details</Button>
+      <Button className="mt-4 font-medium">View Details</Button>
     </div>
   );
 }
