@@ -10,6 +10,7 @@ const att: TAttributes = {
       "src/elements/shared/button.tsx",
       "src/lib/cn.ts",
       "src/elements/shared/input.tsx",
+      "src/elements/shared/avatar.tsx",
     ], // any internal dep (aka shaded components)
   },
 };

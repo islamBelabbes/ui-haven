@@ -9,6 +9,7 @@ const att: TAttributes = {
     internal: [
       "src/elements/shared/button.tsx",
       "src/hooks/use-animate-increment.ts",
+      "src/elements/shared/avatar.tsx",
     ], // any internal dep (aka shaded components)
   },
 };

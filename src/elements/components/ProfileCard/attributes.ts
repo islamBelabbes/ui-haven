@@ -6,7 +6,7 @@ const att: TAttributes = {
   category: "cards", // category (cards / inputs / buttons ... ect)
   dependencies: {
     external: [], // any external dep (aka any 3rd party library)
-    internal: [], // any internal dep (aka shaded components)
+    internal: ["src/elements/shared/avatar.tsx"], // any internal dep (aka shaded components)
   },
 };
 
