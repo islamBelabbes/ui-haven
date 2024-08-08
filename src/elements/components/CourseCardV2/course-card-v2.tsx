@@ -1,8 +1,9 @@
 "use client";
 
+import Avatar from "@/elements/shared/avatar";
 import Button from "@/elements/shared/button";
 import useAnimateIncrement from "@/hooks/use-animate-increment";
-import { Variants, motion } from "framer-motion";
+import { type Variants, motion } from "framer-motion";
 
 export const container: Variants = {
   visible: {
@@ -169,17 +170,13 @@ const Members = () => {
       {membersToShow.map((member, index) => (
         <motion.li
           variants={memberItem}
-          className="relative size-10 rounded-full"
+          className="relative"
           key={member.name}
           style={{
             left: -17 * index,
           }}
         >
-          <img
-            src={member.image}
-            className="absolute inset-0 h-full w-full rounded-full object-cover"
-            alt="member"
-          />
+          <Avatar image={member.image} />
         </motion.li>
       ))}
 
