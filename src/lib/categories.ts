@@ -1,4 +1,4 @@
-export const categories: { name: string; svgPath: string }[] = [
+export const categories = [
   {
     name: "cards",
     svgPath: "/categories/cards.svg",
@@ -6,6 +6,10 @@ export const categories: { name: string; svgPath: string }[] = [
   {
     name: "lists",
     svgPath: "/categories/lists.svg",
+  },
+  {
+    name: "forms",
+    svgPath: "/categories/forms.svg",
   },
 ] as const;
 

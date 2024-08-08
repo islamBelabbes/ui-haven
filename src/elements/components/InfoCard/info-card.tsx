@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { AnimateChangeInHeight } from "@/components/animate-change-in-height";
 import RotatableArrow from "@/elements/shared/rotatable-arrow";
+import Avatar from "@/elements/shared/avatar";
 
 function InfoCard() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -23,13 +24,7 @@ function InfoCard() {
 
       {/* Details */}
       <div className="flex items-center gap-4">
-        <div className="relative !size-12 rounded-full">
-          <img
-            className="absolute inset-0 h-full w-full rounded-full object-cover"
-            alt="tiger"
-            src="/tiger.png"
-          />
-        </div>
+        <Avatar image="/tiger.png" className="size-12" />
 
         <div className="flex flex-col gap-1">
           <h3 className="font-medium leading-[22px] text-[#191D23]">
