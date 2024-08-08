@@ -1,24 +1,24 @@
+import Avatar from "@/elements/shared/avatar";
+
 function ProfileCard() {
   return (
     <div className="w-fit rounded bg-white px-6 py-4">
+      {/* Avatar */}
       <div className="relative mx-auto size-16">
         <div className="absolute bottom-0 right-0 z-10 box-content size-[0.833125rem] -translate-x-[5px] translate-y-[1px] rounded-full border-[2.67px] border-white bg-emerald-700" />
-        <img
-          src="/profile-avatar.jpg"
-          width={300}
-          height={300}
-          className="absolute inset-0 size-full rounded-full"
-          alt="avatar"
-        />
+        <Avatar image="/profile-avatar.jpg" className="size-16" />
       </div>
+
+      {/* Details */}
       <div className="mt-4">
         <span className="text-base/[22px] font-semibold text-[#191D23]">
           Ronald Richards
         </span>
 
+        {/* Actions */}
         <div className="mt-[6px] flex cursor-pointer items-center justify-center gap-[2px]">
           <div className="rotate-[-28.13deg]">
-            <MessageAvatar />
+            <MessageIcon />
           </div>
           <span className="text-base/[22px] font-light text-[#4B5768]">
             Message
@@ -29,7 +29,7 @@ function ProfileCard() {
   );
 }
 
-export const MessageAvatar = () => {
+export const MessageIcon = () => {
   return (
     <svg
       width="17"
