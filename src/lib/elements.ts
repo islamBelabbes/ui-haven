@@ -40,8 +40,7 @@ export async function getElement(elementFolderName: string): Promise<TElement> {
       code: fs.readFileSync(path.join(componentPath, file), "utf-8"),
       language: file.split(".")[1] ?? null,
     }))
-    .filter((file) => file.code.length)
-    .sort((a) => (a.name === convertCase(a.name) ? -1 : 1));
+    .filter((file) => file.code.length);
 
   // get internal dependencies
   const filesWithInternalDependencies = [
@@ -51,7 +50,23 @@ export async function getElement(elementFolderName: string): Promise<TElement> {
       code: fs.readFileSync(path.join(file), "utf-8"),
       language: file.split(".")[1] ?? null,
     })),
-  ];
+  ].sort((a, b) => {
+    // Check if either file is prioritized
+    const isAPriority = a.name === convertCase(a.name);
+    const isBPriority = b.name === convertCase(b.name);
+
+    // Prioritize files that match the specific condition
+    if (isAPriority && !isBPriority) return -1;
+    if (!isAPriority && isBPriority) return 1;
+
+    // Next, prioritize .tsx files
+    const isATsx = a.name.endsWith(".tsx");
+    const isBTsx = b.name.endsWith(".tsx");
+
+    if (isATsx && !isBTsx) return -1;
+    if (!isATsx && isBTsx) return 1;
+    return 0;
+  });
 
   const formattedFiles = await Promise.all(
     filesWithInternalDependencies.map(async (file) => {
