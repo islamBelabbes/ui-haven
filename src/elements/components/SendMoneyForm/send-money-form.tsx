@@ -15,7 +15,7 @@ const mockPromise = () => {
 };
 
 function SendMoneyForm() {
-  const { control, watch, formState, handleSubmit } = useForm({
+  const { control, watch, formState, handleSubmit, reset } = useForm({
     defaultValues: {
       amount: "",
     },
@@ -37,7 +37,7 @@ function SendMoneyForm() {
 
   const handleOnSubmit = async () => {
     await mockPromise();
-    console.log("submitted");
+    return reset();
   };
 
   const amount = watch("amount");
