@@ -10,3 +10,6 @@ export { default as CourseCardV2 } from "./CourseCardV2/course-card-v2";
 
 // Lists & Menus
 export { default as CountrySelect } from "./CountrySelect/country-select";
+
+// forms
+export { default as SendMoneyForm } from "./SendMoneyForm/send-money-form";
