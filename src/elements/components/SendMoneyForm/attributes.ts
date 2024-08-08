@@ -5,7 +5,7 @@ const att: TAttributes = {
   exported: "SendMoneyForm", // the Component Exported Name
   category: "forms", // category (cards / inputs / buttons ... ect)
   dependencies: {
-    external: ["framer-motion", "@radix-ui/react-form", "react-hook-form"], // any external dep (aka any 3rd party library)
+    external: ["@radix-ui/react-form", "react-hook-form"], // any external dep (aka any 3rd party library)
     internal: [
       "src/elements/shared/button.tsx",
       "src/lib/cn.ts",
