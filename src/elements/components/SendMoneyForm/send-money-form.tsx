@@ -28,8 +28,10 @@ function SendMoneyForm() {
     e: React.ChangeEvent<HTMLInputElement>;
     onChange: (value: string) => void;
   }) => {
-    if (/^\d*$/.test(e.target.value)) {
-      return onChange(e.target.value);
+    const value = e.target.value;
+    if (/^\d*$/.test(value)) {
+      if (!(+value <= 1_000_000)) return;
+      return onChange(value);
     }
   };
 
