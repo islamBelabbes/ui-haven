@@ -76,7 +76,7 @@ function SendMoneyForm() {
       />
 
       {/* From */}
-      <SidesWrapper title="From">
+      <Person title="From">
         <Avatar image="/avatar-1.png" />
         <span className="ml-2 text-sm font-semibold text-[#191D23]">
           Checking
@@ -84,10 +84,10 @@ function SendMoneyForm() {
         <span className="ml-auto text-sm text-slate-500">
           Card ending in 4242
         </span>
-      </SidesWrapper>
+      </Person>
 
       {/* Recipient */}
-      <SidesWrapper title="Receiving">
+      <Person title="Receiving">
         <Avatar image="/avatar-2.png" />
 
         <div className="ml-2">
@@ -96,7 +96,7 @@ function SendMoneyForm() {
             @KittyKatmills
           </span>
         </div>
-      </SidesWrapper>
+      </Person>
 
       {/* Submit */}
       <Button disabled={!amount || formState.isSubmitting}>
@@ -106,7 +106,7 @@ function SendMoneyForm() {
   );
 }
 
-const SidesWrapper = ({
+const Person = ({
   title,
   children,
 }: {
