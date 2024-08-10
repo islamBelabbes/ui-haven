@@ -3,16 +3,9 @@ import Avatar from "@/elements/shared/avatar";
 import Button from "@/elements/shared/button";
 import Input from "@/elements/shared/input";
 import cn from "@/lib/cn";
+import wait from "@/lib/wait";
 import * as Form from "@radix-ui/react-form";
 import { useForm, Controller } from "react-hook-form";
-
-const mockPromise = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, 1000);
-  });
-};
 
 function SendMoneyForm() {
   const { control, watch, formState, handleSubmit, reset } = useForm({
@@ -36,7 +29,7 @@ function SendMoneyForm() {
   };
 
   const handleOnSubmit = async () => {
-    await mockPromise();
+    await wait();
     return reset();
   };
 
