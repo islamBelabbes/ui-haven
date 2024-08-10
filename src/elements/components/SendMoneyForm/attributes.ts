@@ -8,9 +8,10 @@ const att: TAttributes = {
     external: ["@radix-ui/react-form", "react-hook-form"], // any external dep (aka any 3rd party library)
     internal: [
       "src/elements/shared/button.tsx",
-      "src/lib/cn.ts",
       "src/elements/shared/input.tsx",
       "src/elements/shared/avatar.tsx",
+      "src/lib/cn.ts",
+      "src/lib/wait.ts",
     ], // any internal dep (aka shaded components)
   },
 };
