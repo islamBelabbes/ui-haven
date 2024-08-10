@@ -13,3 +13,4 @@ export { default as CountrySelect } from "./CountrySelect/country-select";
 
 // forms
 export { default as SendMoneyForm } from "./SendMoneyForm/send-money-form";
+export { default as LoginForm } from "./LoginForm/login-form";

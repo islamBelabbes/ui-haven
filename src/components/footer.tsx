@@ -24,7 +24,11 @@ function Footer() {
           return (
             <li key={id} className="relative size-8">
               <a href={url} target="_blank" rel="noreferrer">
-                <img src={logo} alt={id} className="absolute h-full w-full" />
+                <img
+                  src={`/${logo}`}
+                  alt={id}
+                  className="absolute h-full w-full"
+                />
               </a>
             </li>
           );
