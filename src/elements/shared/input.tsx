@@ -8,7 +8,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <input
         className={cn(
-          "rounded border border-[#D0D5DD] p-2 text-sm text-[#191D23]",
+          "rounded border border-[#D0D5DD] p-2 text-sm text-[#191D23] disabled:cursor-not-allowed disabled:opacity-50",
           className,
         )}
         ref={ref}
