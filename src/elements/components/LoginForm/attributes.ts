@@ -10,11 +10,14 @@ const att: TAttributes = {
       "@radix-ui/react-separator",
       "@radix-ui/react-checkbox",
       "@radix-ui/react-form",
+      "@hookform/resolvers",
+      "zod",
     ],
     internal: [
       "src/elements/shared/input.tsx",
       "src/elements/shared/button.tsx",
       "src/lib/cn.ts",
+      "src/lib/wait.ts",
     ],
   },
 };

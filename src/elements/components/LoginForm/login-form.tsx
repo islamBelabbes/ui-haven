@@ -7,7 +7,10 @@ import * as Separator from "@radix-ui/react-separator";
 import { useForm, Controller } from "react-hook-form";
 import Button from "@/elements/shared/button";
 import cn from "@/lib/cn";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import wait from "@/lib/wait";
 
 const SOCIAL_LOGIN = [
   {
@@ -27,22 +30,45 @@ const SOCIAL_LOGIN = [
   },
 ];
 
+const schema = z.object({
+  email: z.string().email(),
+  password: z.string().min(8),
+  remember: z.boolean(),
+});
+
+type TSchema = z.infer<typeof schema>;
+
 function LoginForm() {
   const [viewPassword, setViewPassword] = useState(false);
-  const { control, ...form } = useForm({
+  const {
+    control,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<TSchema>({
     defaultValues: {
       email: "",
       password: "",
-      remember: true,
+      remember: false,
     },
+    resolver: zodResolver(schema),
   });
 
   const togglePasswordVisibility = () => {
     setViewPassword(!viewPassword);
   };
 
+  const handleOnSubmit = async (data: TSchema) => {
+    await wait(1000);
+    reset();
+    console.log(data);
+  };
+
   return (
-    <Form.Root className="w-[300px] rounded bg-white p-6">
+    <Form.Root
+      className="w-[300px] rounded bg-white p-6"
+      onSubmit={handleSubmit(handleOnSubmit)}
+    >
       {/* Entry */}
       <LogoIcon />
       <h1 className="mt-6 text-[1.375rem]/[1.875rem] font-bold text-[#191D23]">
@@ -56,7 +82,7 @@ function LoginForm() {
       <Controller
         control={control}
         name="email"
-        render={({ field: { value, ...field } }) => (
+        render={({ field }) => (
           <Form.Field name={field.name} className="mt-6">
             <Form.Label className="mb-1 block font-semibold text-[#191D23]">
               Email Address
@@ -64,9 +90,12 @@ function LoginForm() {
             <Form.Control asChild>
               <Input
                 {...field}
-                className="w-full"
+                className={cn("w-full", {
+                  "border-destructive focus-visible:outline-destructive":
+                    errors.email,
+                })}
+                disabled={isSubmitting}
                 type="email"
-                value={undefined}
               />
             </Form.Control>
           </Form.Field>
@@ -90,9 +119,12 @@ function LoginForm() {
               <Form.Control asChild>
                 <Input
                   {...field}
-                  className="w-full"
+                  className={cn("w-full", {
+                    "border-destructive focus-visible:outline-destructive":
+                      errors.password,
+                  })}
+                  disabled={isSubmitting}
                   type={viewPassword ? "text" : "password"}
-                  value={undefined}
                 />
               </Form.Control>
               <button
@@ -116,16 +148,20 @@ function LoginForm() {
             name={reset.name}
             className="mt-6 flex flex-row-reverse items-center justify-end gap-2"
           >
-            <Form.Label className="cursor-pointer text-sm text-[#191D23]">
+            <Form.Label className="text-sm text-[#191D23]">
               Keep me signed in
             </Form.Label>
 
             <Form.Control asChild>
               <Checkbox.Root
+                disabled={isSubmitting}
                 {...reset}
-                className={cn("relative size-4 border border-transparent", {
-                  "border-[#D0D5DD]": !value,
-                })}
+                className={cn(
+                  "relative size-4 border border-transparent disabled:cursor-not-allowed",
+                  {
+                    "border-[#D0D5DD]": !value,
+                  },
+                )}
                 checked={value}
                 onCheckedChange={reset.onChange}
               >
@@ -141,7 +177,9 @@ function LoginForm() {
       />
 
       {/* Submit */}
-      <Button className="mt-6 w-full">Continue</Button>
+      <Button className="mt-6 w-full" disabled={isSubmitting}>
+        Continue
+      </Button>
 
       {/* Social Logins */}
       <div className="mx-auto mt-6 flex w-fit items-center gap-2 text-sm font-medium text-[#4B5768]">
@@ -161,6 +199,7 @@ function LoginForm() {
         {SOCIAL_LOGIN.map(({ name, id, icon }) => (
           <li key={id}>
             <button
+              disabled={isSubmitting}
               className="flex items-center justify-center gap-[6px] rounded border border-[#D0D5DD] p-2"
               type="button"
             >
