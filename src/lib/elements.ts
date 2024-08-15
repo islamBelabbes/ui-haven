@@ -36,14 +36,8 @@ export async function getElement(
   }
 
   const attributes = await import(
-    path.join(rootPath, elementFolderName, "attributes.ts")
+    `@/elements/components/${elementFolderName}/attributes.ts`
   ).then((file: { default: TAttributes }) => file.default);
-
-  if (!attributes) {
-    throw new ElementError(
-      `Element ${elementFolderName} has no attributes please make sure you have an attributes.ts file`,
-    );
-  }
 
   const componentContents = fs
     .readdirSync(componentPath)
