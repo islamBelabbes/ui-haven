@@ -17,16 +17,15 @@ export type TElement = {
   attributes: TAttributes;
 };
 
-export async function getElement(elementFolderName: string): Promise<TElement> {
-  const componentPath = path.resolve(
-    "src",
-    "elements",
-    "components",
-    elementFolderName,
-  );
+export async function getElement(
+  elementFolderName: string,
+  Root: string = "src/elements/components",
+): Promise<TElement> {
+  const rootPath = path.resolve(Root);
+  const componentPath = path.resolve(rootPath, elementFolderName);
 
   const attributes = await import(
-    `@/elements/components/${elementFolderName}/attributes.ts`
+    path.join(rootPath, elementFolderName, "attributes.ts")
   ).then((file: { default: TAttributes }) => file.default);
 
   const componentContents = fs
@@ -70,6 +69,7 @@ export async function getElement(elementFolderName: string): Promise<TElement> {
 
   const formattedFiles = await Promise.all(
     filesWithInternalDependencies.map(async (file) => {
+      // const formattedCode = file.code;
       const formattedCode = await codeToHtml(file.code, {
         lang: "javascript",
         theme: "ayu-dark",
@@ -90,19 +90,22 @@ export async function getElement(elementFolderName: string): Promise<TElement> {
   };
 }
 
-export async function getAllElements() {
-  const root = path.resolve("src", "elements", "components");
+export async function getAllElements(Root: string | undefined = undefined) {
+  const root = Root ?? path.resolve("src", "elements", "components");
   const paths = fs.readdirSync(root).filter((path) => path !== "index.ts");
 
   return await Promise.all(
     paths.map(async (path) => {
-      const content = await getElement(path);
+      const content = await getElement(path, Root);
       return content;
     }),
   );
 }
 
-export async function getElementsByCategory(category: TCategories) {
-  const elements = await getAllElements();
+export async function getElementsByCategory(
+  category: TCategories,
+  Root: string | undefined = undefined,
+) {
+  const elements = await getAllElements(Root);
   return elements.filter((element) => element.attributes.category === category);
 }
