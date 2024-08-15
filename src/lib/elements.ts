@@ -5,6 +5,13 @@ import { codeToHtml } from "shiki";
 import { type TCategories } from "./categories";
 import { convertCase } from "./utils";
 
+export class ElementError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "ElementError";
+  }
+}
+
 export type TElement = {
   files: {
     code: {
@@ -24,13 +31,29 @@ export async function getElement(
   const rootPath = path.resolve(Root);
   const componentPath = path.resolve(rootPath, elementFolderName);
 
+  if (!fs.existsSync(componentPath)) {
+    throw new ElementError(`Element ${elementFolderName} not found`);
+  }
+
   const attributes = await import(
     path.join(rootPath, elementFolderName, "attributes.ts")
   ).then((file: { default: TAttributes }) => file.default);
 
+  if (!attributes) {
+    throw new ElementError(
+      `Element ${elementFolderName} has no attributes please make sure you have an attributes.ts file`,
+    );
+  }
+
   const componentContents = fs
     .readdirSync(componentPath)
     .filter((item) => item.endsWith(".tsx") || item.endsWith(".ts"));
+
+  if (!componentContents.length) {
+    throw new ElementError(
+      `Element ${elementFolderName} has no components please add implementation`,
+    );
+  }
 
   const files = componentContents
     .filter((name) => name !== `attributes.ts`)
