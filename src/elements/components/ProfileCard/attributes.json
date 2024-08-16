@@ -1,0 +1,11 @@
+
+      {
+        "name": "Profile Card",
+        "exported": "ProfileCard",
+        "category": "cards",
+        "dependencies": {
+          "external": [],
+          "internal": ["src/elements/shared/avatar.tsx"]
+        }
+      }
+      

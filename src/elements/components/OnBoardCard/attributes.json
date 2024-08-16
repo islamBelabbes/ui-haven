@@ -1,0 +1,11 @@
+
+      {
+        "name": "On board Card",
+        "exported": "OnBoardCard",
+        "category": "cards",
+        "dependencies": {
+          "external": ["framer-motion"],
+          "internal": ["src/elements/shared/button.tsx"]
+        }
+      }
+      

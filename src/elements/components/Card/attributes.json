@@ -1,0 +1,11 @@
+
+      {
+        "name": "Card",
+        "exported": "Card",
+        "category": "cards",
+        "dependencies": {
+          "external": [],
+          "internal": ["src/elements/shared/button.tsx"]
+        }
+      }
+      

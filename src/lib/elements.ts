@@ -35,9 +35,16 @@ export async function getElement(
     throw new ElementError(`Element ${elementFolderName} not found`);
   }
 
-  const attributes = await import(
-    `@/elements/components/${elementFolderName}/attributes.ts`
-  ).then((file: { default: TAttributes }) => file.default);
+  const attributesPath = path.join(componentPath, "attributes.json");
+
+  if (!fs.existsSync(attributesPath)) {
+    throw new ElementError(
+      `Element ${elementFolderName} has no attributes.json file`,
+    );
+  }
+
+  const attributesJson = fs.readFileSync(attributesPath, "utf-8");
+  const attributes = JSON.parse(attributesJson) as TAttributes;
 
   const componentContents = fs
     .readdirSync(componentPath)

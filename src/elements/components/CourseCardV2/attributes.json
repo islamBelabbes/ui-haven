@@ -1,0 +1,11 @@
+
+      {
+        "name": "Course Card V2",
+        "exported": "CourseCardV2",
+        "category": "cards",
+        "dependencies": {
+          "external": ["framer-motion"],
+          "internal": ["src/elements/shared/button.tsx","src/hooks/use-animate-increment.ts","src/elements/shared/avatar.tsx"]
+        }
+      }
+      

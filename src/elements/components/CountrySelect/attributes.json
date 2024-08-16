@@ -1,0 +1,11 @@
+
+      {
+        "name": "Country Select",
+        "exported": "CountrySelect",
+        "category": "lists",
+        "dependencies": {
+          "external": ["framer-motion","countries-list","country-flag-icons","@radix-ui/react-select"],
+          "internal": ["./src/lib/cn.ts","./src/elements/shared/rotatable-arrow.tsx"]
+        }
+      }
+      

@@ -17,17 +17,16 @@ beforeAll(() => {
   // main component
   fs.mkdirSync(path.join(testDir, "components", "Card"), { recursive: true });
   fs.writeFileSync(
-    path.join(testDir, "components", "Card", "attributes.ts"),
-    `
-      export default {
-          name: "Card", // the Component Heading name
-          exported: "Card", // the Component Exported Name
-          category: "cards", // category (cards / inputs / buttons ... ect)
-          dependencies: {
-            external: [], // any external dep (aka any 3rd party library)
-            internal: ["${path.join(testDir, "shared", "ui", "button.tsx").replace(/\\/g, "\\\\")}"], // any internal dep (aka shaded components)
-          },
-      };
+    path.join(testDir, "components", "Card", "attributes.json"),
+    `{
+        "name": "Card",
+        "exported": "Card",
+        "category": "cards",
+        "dependencies": {
+          "external": [],
+          "internal": ["${path.join(testDir, "shared", "ui", "button.tsx").replace(/\\/g, "\\\\")}"]
+        }
+    }
     `,
   );
   fs.writeFileSync(
