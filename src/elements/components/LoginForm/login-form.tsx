@@ -7,7 +7,7 @@ import * as Separator from "@radix-ui/react-separator";
 import { useForm, Controller } from "react-hook-form";
 import Button from "@/elements/shared/button";
 import cn from "@/lib/cn";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import wait from "@/lib/wait";
