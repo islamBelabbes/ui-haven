@@ -42,7 +42,7 @@ describe("Integration tests", () => {
       );
 
       expect(element.files.length).toBe(2); // main component + internal dependency
-      expect(element.attributes.category).toBe("seeded");
+      expect(element.attributes.category).toBe("cards");
     });
   });
 
@@ -56,13 +56,13 @@ describe("Integration tests", () => {
   describe("getElementsByCategory", () => {
     it("should get elements by category", async () => {
       const seededElements = await getElementsByCategory(
-        "seeded",
+        "cards",
         path.join(testDir, "components"),
       );
 
       expect(seededElements.length).toBe(1);
       if (seededElements[0]) {
-        expect(seededElements[0].attributes.category).toBe("seeded");
+        expect(seededElements[0].attributes.category).toBe("cards");
       }
     });
   });

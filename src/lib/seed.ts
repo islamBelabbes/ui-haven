@@ -28,7 +28,7 @@ export const seedElement = async ({
     `{
         "name": "Seeded Element",
         "exported": "SeededElement",
-        "category": "seeded",
+        "category": "cards",
         "dependencies": {
           "external": [],
           "internal": ["${path.join(_root, "shared", "ui", "button.tsx").replace(/\\/g, "\\\\")}"]
