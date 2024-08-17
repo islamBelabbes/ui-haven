@@ -7,7 +7,7 @@ import Image from "next/image";
 
 function CategoriesList() {
   return (
-    <Container>
+    <Container data-test="categories-list">
       <ul
         className="grid items-center gap-5 md:grid-cols-2 lg:grid-cols-3"
         id="categories-list"

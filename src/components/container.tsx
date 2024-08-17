@@ -1,14 +1,12 @@
 import cn from "@/lib/cn";
 
-function Container({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
+type TContainerProps = React.HtmlHTMLAttributes<HTMLDivElement> & {
   className?: string;
-}) {
+};
+
+function Container({ children, className, ...props }: TContainerProps) {
   return (
-    <div className={cn("mx-auto w-full max-w-7xl px-3", className)}>
+    <div className={cn("mx-auto w-full max-w-7xl px-3", className)} {...props}>
       {children}
     </div>
   );

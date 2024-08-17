@@ -11,6 +11,10 @@ export const categories = [
     name: "forms",
     svgPath: "/categories/forms.svg",
   },
+  {
+    name: "seeded",
+    svgPath: "/categories/forms.svg",
+  }, // this is for testing purposes
 ] as const;
 
 export type TCategories = (typeof categories)[number]["name"];

@@ -4,6 +4,7 @@ import path from "path";
 import { codeToHtml } from "shiki";
 import { type TCategories } from "./categories";
 import { convertCase } from "./utils";
+import { ROOT_ELEMENTS_FOLDER } from "./constants";
 
 export class ElementError extends Error {
   constructor(message: string) {
@@ -26,7 +27,7 @@ export type TElement = {
 
 export async function getElement(
   elementFolderName: string,
-  Root = "src/elements/components",
+  Root = ROOT_ELEMENTS_FOLDER + "components",
 ): Promise<TElement> {
   const rootPath = path.resolve(Root);
   const componentPath = path.resolve(rootPath, elementFolderName);

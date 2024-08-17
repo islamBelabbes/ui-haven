@@ -8,7 +8,10 @@ export default async function HomePage() {
       <HeroBanner />
 
       <Container className="mb-5 mt-24">
-        <h1 className="mb-6 text-center text-xl md:text-3xl">
+        <h1
+          className="mb-6 text-center text-xl md:text-3xl"
+          data-test="hero-title"
+        >
           TailwindCss,RadixUi,FramerMotion Components Collection
         </h1>
         <p className="text-pretty text-center text-base text-gray-300 md:px-64 md:text-lg">

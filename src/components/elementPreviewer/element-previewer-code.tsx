@@ -11,6 +11,7 @@ function ElementPreviewerCode() {
 
   return (
     <motion.div
+      data-test="code-previewer"
       className="w-full"
       variants={fadeIn}
       initial="hidden"
@@ -22,7 +23,11 @@ function ElementPreviewerCode() {
         <ScrollArea>
           <TabsList className="rounded-none border bg-transparent">
             {element.files.map((file) => (
-              <TabsTrigger value={file.name} key={file.name}>
+              <TabsTrigger
+                value={file.name}
+                key={file.name}
+                data-test="code-previewer-tab"
+              >
                 {file.name}
               </TabsTrigger>
             ))}
@@ -38,6 +43,7 @@ function ElementPreviewerCode() {
               <div
                 dangerouslySetInnerHTML={{ __html: file.code.formatted }}
                 className="code-previewer max-h-[400px]"
+                data-test="code-previewer-code"
               />
 
               <ScrollBar orientation="horizontal" />

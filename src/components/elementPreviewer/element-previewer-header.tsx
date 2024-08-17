@@ -185,6 +185,7 @@ const Mods = () => {
         return (
           <div className="relative" key={mod}>
             <Button
+              data-test={`code-previewer-mod-switcher-${mod}`}
               disabled={!isMounted}
               onClick={() => setMod(mod)}
               variant="outline"

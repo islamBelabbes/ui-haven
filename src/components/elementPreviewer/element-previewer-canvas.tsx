@@ -11,6 +11,7 @@ function ElementPreviewerCanvas() {
 
   return (
     <motion.div
+      data-test="element-previewer"
       className="p-4"
       variants={fadeIn}
       initial="hidden"

@@ -27,6 +27,7 @@ export default function CopyButton({
       )}
       onClick={handleCopy}
       disabled={isCopied}
+      data-test="copy-button"
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.div

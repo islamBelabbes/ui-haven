@@ -31,7 +31,7 @@ function ComponentPreviewer({ element }: { element: TElement }) {
 const ComponentPreviewerContent = () => {
   const { mod } = useElementPreviewer();
   return (
-    <div className="w-full max-w-7xl rounded">
+    <div className="w-full max-w-7xl rounded" data-test="component-previewer">
       <PreviewerHeader />
 
       <AnimateChangeInHeight

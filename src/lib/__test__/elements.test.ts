@@ -1,3 +1,5 @@
+import { expect } from "@jest/globals";
+
 import fs from "fs";
 import path from "path";
 import {
@@ -6,6 +8,7 @@ import {
   getElementsByCategory,
 } from "@/lib/elements";
 import { codeToHtml } from "shiki";
+import { seedElement } from "@/../scripts/seed";
 
 const testDir = path.join(__dirname, "test-elements"); // Set up test directory
 
@@ -14,38 +17,7 @@ jest.mock("shiki", () => ({
 }));
 
 beforeAll(() => {
-  // main component
-  fs.mkdirSync(path.join(testDir, "components", "Card"), { recursive: true });
-  fs.writeFileSync(
-    path.join(testDir, "components", "Card", "attributes.json"),
-    `{
-        "name": "Card",
-        "exported": "Card",
-        "category": "cards",
-        "dependencies": {
-          "external": [],
-          "internal": ["${path.join(testDir, "shared", "ui", "button.tsx").replace(/\\/g, "\\\\")}"]
-        }
-    }
-    `,
-  );
-  fs.writeFileSync(
-    path.join(testDir, "components", "Card", "card.tsx"),
-    `
-    import {Button} from "./button.tsx";
-    export const Card = () => <div>Card Component</div>;
-    `,
-  );
-
-  // internal dependency
-  fs.mkdirSync(path.join(testDir, "shared", "ui"), { recursive: true });
-  // Create mock button.tsx file (as internal Dependency)
-  fs.writeFileSync(
-    path.join(testDir, "shared", "ui", "button.tsx"),
-    `
-      export const Button = () => <div>Button</div>;
-      `,
-  );
+  seedElement({ root: testDir });
 });
 
 afterAll(() => {
@@ -65,12 +37,12 @@ describe("Integration tests", () => {
   describe("getElement", () => {
     it("should get element data", async () => {
       const element = await getElement(
-        "Card",
+        "SeededElement",
         path.join(testDir, "components"),
       );
 
       expect(element.files.length).toBe(2); // main component + internal dependency
-      expect(element.attributes.category).toBe("cards");
+      expect(element.attributes.category).toBe("seeded");
     });
   });
 
@@ -83,14 +55,14 @@ describe("Integration tests", () => {
 
   describe("getElementsByCategory", () => {
     it("should get elements by category", async () => {
-      const cardElements = await getElementsByCategory(
-        "cards",
+      const seededElements = await getElementsByCategory(
+        "seeded",
         path.join(testDir, "components"),
       );
 
-      expect(cardElements.length).toBe(1);
-      if (cardElements[0]) {
-        expect(cardElements[0].attributes.category).toBe("cards");
+      expect(seededElements.length).toBe(1);
+      if (seededElements[0]) {
+        expect(seededElements[0].attributes.category).toBe("seeded");
       }
     });
   });
