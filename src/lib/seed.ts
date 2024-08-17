@@ -1,4 +1,4 @@
-import { ROOT_ELEMENTS_FOLDER } from "@/lib/constants";
+import { ROOT_ELEMENTS_FOLDER } from "./constants";
 import fs from "fs";
 import path from "path";
 
@@ -31,7 +31,7 @@ export const seedElement = async ({
         "category": "cards",
         "dependencies": {
           "external": [],
-          "internal": ["${path.join(_root, "shared", "ui", "button.tsx").replace(/\\/g, "\\\\")}"]
+          "internal": ["${path.join(_root, "shared", "ui", "button-seeded.tsx").replace(/\\/g, "\\\\")}"]
         }
     }
     `,
@@ -39,7 +39,7 @@ export const seedElement = async ({
   fs.writeFileSync(
     path.join(elementFolder, "seeded-element.tsx"),
     `
-    import {Button} from "./button.tsx";
+    import {Button} from "./button-seeded.tsx";
     export const SeededElement = () => <div>Seeded Element Component</div>;
     `,
   );
@@ -48,7 +48,7 @@ export const seedElement = async ({
   fs.mkdirSync(path.join(_root, "shared", "ui"), { recursive: true });
   // Create mock button.tsx file (as internal Dependency)
   fs.writeFileSync(
-    path.join(_root, "shared", "ui", "button.tsx"),
+    path.join(_root, "shared", "ui", "button-seeded.tsx"),
     `
       export const Button = () => <div>Button</div>;
       `,
@@ -57,5 +57,12 @@ export const seedElement = async ({
 
 export const clearSeededElement = async (root = ROOT_ELEMENTS_FOLDER) => {
   const elementFolder = path.resolve(root, "components", SEEDED_ELEMENT_NAME);
+  const internalDependency = path.resolve(
+    root,
+    "shared",
+    "ui",
+    "button-seeded.tsx",
+  );
   fs.rmSync(elementFolder);
+  fs.rmSync(internalDependency);
 };

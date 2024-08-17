@@ -27,7 +27,7 @@ export type TElement = {
 
 export async function getElement(
   elementFolderName: string,
-  Root = ROOT_ELEMENTS_FOLDER + "components",
+  Root = ROOT_ELEMENTS_FOLDER + "/components",
 ): Promise<TElement> {
   const rootPath = path.resolve(Root);
   const componentPath = path.resolve(rootPath, elementFolderName);
