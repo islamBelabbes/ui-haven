@@ -8,7 +8,7 @@ import {
   getElementsByCategory,
 } from "@/lib/elements";
 import { codeToHtml } from "shiki";
-import { seedElement } from "@/../scripts/seed";
+import { seedElement } from "@/lib/seed";
 
 const testDir = path.join(__dirname, "test-elements"); // Set up test directory
 
