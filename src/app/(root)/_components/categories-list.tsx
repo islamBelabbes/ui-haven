@@ -4,6 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 import Container from "@/components/container";
 import Image from "next/image";
+import cn from "@/lib/cn";
 
 function CategoriesList() {
   return (
@@ -13,9 +14,15 @@ function CategoriesList() {
         id="categories-list"
       >
         {categories.map((category) => (
-          <li key={category.name}>
-            <Link href={`/categories/${category.name}`}>
-              <Card>
+          <li key={category.name} className="select-none">
+            <Link
+              href={category.comingSoon ? "#" : `/categories/${category.name}`}
+              className={cn({ "pointer-events-none": category.comingSoon })}
+              {...(category.comingSoon
+                ? { onClick: (e) => e.preventDefault() }
+                : {})}
+            >
+              <Card className="relative overflow-hidden">
                 <CardHeader className="flex-row items-center justify-between border-b px-5 py-3">
                   <CardTitle className="text-lg">{category.name}</CardTitle>
                   <ArrowIcon />
@@ -25,6 +32,13 @@ function CategoriesList() {
                     <Image src={category.svgPath} alt={category.name} fill />
                   </div>
                 </CardContent>
+                {category.comingSoon && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-60">
+                    <span className="text-2xl font-bold text-white">
+                      Coming Soon ...
+                    </span>
+                  </div>
+                )}
               </Card>
             </Link>
           </li>

@@ -1,0 +1,14 @@
+<svg
+  className="absolute h-full w-full"
+  viewBox="0 0 400 200"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <!-- Upload Area Background -->
+  <rect width="100%" height="100%" rx="4" ry="4" fill="hsl(var(--primary-foreground))" />
+
+  <!-- Upload Icon -->
+  <rect x="175" y="50" width="50" height="50" rx="8" ry="8" fill="#3b3f47" />
+
+  <!-- Upload Text -->
+  <rect x="100" y="120" width="200" height="20" rx="4" ry="4" fill="#3b3f47" />
+</svg>

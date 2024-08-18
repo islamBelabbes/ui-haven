@@ -18,22 +18,28 @@ export default async function CategoryPage({
   const elements = await getElementsByCategory(category);
   return (
     <div className="mx-auto grid min-h-screen max-w-7xl gap-5 p-2">
-      {elements.map((element) => (
-        <div
-          key={element.attributes.exported}
-          className="overflow-hidden [&:not(:last-child)]:border-b-2 [&:not(:last-child)]:pb-3"
-        >
-          <h1 className="my-3 font-bold">{element.attributes.name}</h1>
+      {elements.length ? (
+        elements.map((element) => (
+          <div
+            key={element.attributes.exported}
+            className="overflow-hidden [&:not(:last-child)]:border-b-2 [&:not(:last-child)]:pb-3"
+          >
+            <h1 className="my-3 font-bold">{element.attributes.name}</h1>
 
-          {Boolean(element.attributes.dependencies.external.length) && (
-            <Installation
-              dependencies={element.attributes.dependencies.external}
-            />
-          )}
+            {Boolean(element.attributes.dependencies.external.length) && (
+              <Installation
+                dependencies={element.attributes.dependencies.external}
+              />
+            )}
 
-          <ComponentPreviewer element={element} />
-        </div>
-      ))}
+            <ComponentPreviewer element={element} />
+          </div>
+        ))
+      ) : (
+        <h1 className="mt-5 text-center text-lg font-bold">
+          There are no elements in this category
+        </h1>
+      )}
     </div>
   );
 }
