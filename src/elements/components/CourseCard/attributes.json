@@ -1,11 +1,9 @@
-
-      {
-        "name": "Course Card",
-        "exported": "CourseCard",
-        "category": "cards",
-        "dependencies": {
-          "external": ["framer-motion"],
-          "internal": ["src/elements/shared/button.tsx"]
-        }
-      }
-      
+{
+  "name": "Course Card",
+  "exported": "CourseCard",
+  "category": "card",
+  "dependencies": {
+    "external": ["framer-motion"],
+    "internal": ["src/elements/shared/button.tsx"]
+  }
+}

@@ -1,16 +1,16 @@
 export const categories = [
   {
-    name: "cards",
+    name: "card",
     svgPath: "/categories/cards.svg",
     comingSoon: false,
   },
   {
-    name: "lists",
+    name: "list",
     svgPath: "/categories/lists.svg",
     comingSoon: false,
   },
   {
-    name: "forms",
+    name: "form",
     svgPath: "/categories/forms.svg",
     comingSoon: false,
   },

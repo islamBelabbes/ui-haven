@@ -1,11 +1,13 @@
-
-      {
-        "name": "Info Card",
-        "exported": "InfoCard",
-        "category": "cards",
-        "dependencies": {
-          "external": ["framer-motion","clsx","tailwind-merge"],
-          "internal": ["src/components/animate-change-in-height.tsx","src/elements/shared/avatar.tsx","src/lib/cn.ts"]
-        }
-      }
-      
+{
+  "name": "Info Card",
+  "exported": "InfoCard",
+  "category": "card",
+  "dependencies": {
+    "external": ["framer-motion", "clsx", "tailwind-merge"],
+    "internal": [
+      "src/components/animate-change-in-height.tsx",
+      "src/elements/shared/avatar.tsx",
+      "src/lib/cn.ts"
+    ]
+  }
+}

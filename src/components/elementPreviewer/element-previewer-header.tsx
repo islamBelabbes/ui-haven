@@ -143,7 +143,8 @@ const BreakPoints = () => {
         return (
           <div className="relative" key={device}>
             <Button
-              disabled={mod !== "preview"}
+              // disabled={mod !== "preview"}
+              disabled
               className={cn(
                 "relative flex size-9 p-2 hover:bg-transparent disabled:z-30",
               )}

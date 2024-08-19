@@ -1,11 +1,15 @@
-
-      {
-        "name": "Send Money Form",
-        "exported": "SendMoneyForm",
-        "category": "forms",
-        "dependencies": {
-          "external": ["@radix-ui/react-form","react-hook-form"],
-          "internal": ["src/elements/shared/button.tsx","src/elements/shared/input.tsx","src/elements/shared/avatar.tsx","src/lib/cn.ts","src/lib/wait.ts"]
-        }
-      }
-      
+{
+  "name": "Send Money Form",
+  "exported": "SendMoneyForm",
+  "category": "form",
+  "dependencies": {
+    "external": ["@radix-ui/react-form", "react-hook-form"],
+    "internal": [
+      "src/elements/shared/button.tsx",
+      "src/elements/shared/input.tsx",
+      "src/elements/shared/avatar.tsx",
+      "src/lib/cn.ts",
+      "src/lib/wait.ts"
+    ]
+  }
+}
