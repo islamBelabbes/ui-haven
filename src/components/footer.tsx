@@ -17,7 +17,7 @@ const RESOURCES = [
 function Footer() {
   return (
     <footer className="mt-4 flex justify-between border-t px-3 py-[18px] md:px-20">
-      <span>© 2024 Ping Labs. All rights reserved.</span>
+      <span>© {new Date().getFullYear()}</span>
 
       <ul className="flex gap-2">
         {RESOURCES.map(({ id, url, logo }) => {
