@@ -1,29 +1,85 @@
-# Create T3 App
+<!-- ReadMe inspiration From JavaScriptMastery -->
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+<div align="center">
+  <br />
+    <a href="https://youtu.be/R8CIO1DZ2b8" target="_blank" style="border:1px solid red;border-radius:20px;">
+      <img src="public/banner.jpg" alt="Project Banner" style="border:1px solid red;border-radius:20px;">
+    </a>
+  
+  <br />
 
-## What's next? How do I make an app with this?
+  <div>
+    <img alt="Static Badge" src="https://img.shields.io/badge/-Next_JS-black?style=for-the-badge&logo=nextdotjs">
+<img alt="Static Badge" src="https://img.shields.io/badge/-Tailwind_Css-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">
+<img alt="Static Badge" src="https://img.shields.io/badge/-typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+    <img alt="Static Badge" src="https://img.shields.io/badge/-Radix_Ui-black?style=for-the-badge&logo=radixui&logoColor=white">
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+   
+  </div>
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+  <h3 align="center">Ui Haven</h3>
 
-## Learn More
+   <div align="center">
+     Pre-Built Ui Components
+    </div>
+</div>
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## 📋 <a name="table">Table of Contents</a>
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+1. 🤖 [Introduction](#introduction)
+2. ⚙️ [Tech Stack](#tech-stack)
+3. 🔋 [Features](#features)
+4. 🤸 [Quick Start](#quick-start)
+5. 🕸️ [Assets & Code](#snippets)
+6. 🚀 [More](#more)
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## <a name="introduction">🤖 Introduction</a>
+A collection of pre-built Ui elements that help you speed up your development process
 
-## How do I deploy this?
+## <a name="tech-stack">⚙️ Tech Stack</a>
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+- Next.js
+- TypeScript
+- Radix Ui
+- Framer Motion
+- shadcn
+- Tailwind CSS
+
+## <a name="quick-start">🤸 Quick Start</a>
+
+Follow these steps to set up the project locally on your machine.
+
+**Prerequisites**
+
+Make sure you have the following installed on your machine:
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en)
+- [npm](https://www.npmjs.com/) (Node Package Manager)
+
+**Cloning the Repository**
+
+```bash
+git clone https://github.com/islamBelabbes/ui-haven.git
+cd ui-haven
+```
+
+**Installation**
+
+Install the project dependencies using npm:
+
+```bash
+npm install
+```
+**Running the Project**
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
+
+## <a name="links">🔗 Links</a>
+
+You Can Find the Figma File of the Ui Elements [here](https://www.figma.com/community/file/1124982314884360813/user-interface-elements) -> (copyright to Tré Wilson)
