@@ -2,9 +2,9 @@
 
 <div align="center">
   <br />
-    <a href="https://youtu.be/R8CIO1DZ2b8" target="_blank" style="border:1px solid red;border-radius:20px;">
+    <div style="border:1px solid red;border-radius:20px;">
       <img src="public/banner.jpg" alt="Project Banner" style="border:1px solid red;border-radius:20px;">
-    </a>
+    </div>
   
   <br />
 
